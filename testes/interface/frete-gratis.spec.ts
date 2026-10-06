@@ -17,6 +17,7 @@ test.describe('Frete grátis e regra do valor faltante', () => {
   });
 
   test('CT-FRETE-02: Frete grátis com subtotal mínimo exato', async ({ page }) => {
+    test.fail(true, 'BUG-001: frete grátis não é aplicado no subtotal exato de R$ 200,00');
     const vitrine = new PaginaVitrine(page);
     const carrinho = new PaginaCarrinho(page);
 
@@ -30,6 +31,7 @@ test.describe('Frete grátis e regra do valor faltante', () => {
   });
 
   test('CT-FRETE-04: Frete grátis com cupom válido considerando subtotal antes do desconto', async ({ page }) => {
+    test.fail(true, 'BUG-001: frete grátis não é aplicado no subtotal exato de R$ 200,00');
     const vitrine = new PaginaVitrine(page);
     const carrinho = new PaginaCarrinho(page);
 

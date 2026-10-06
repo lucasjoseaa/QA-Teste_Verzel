@@ -41,3 +41,9 @@
 - Foram adicionados CT-CLIENTE-05 e CT-CLIENTE-06 à especificação e à matriz, além de quatro testes de API (três exemplos de nomes e um caso de e-mail).
 - A execução real da suíte de API teve 34 testes: 26 passaram e 8 falharam. Os quatro testes novos retornaram HTTP 201, em vez do status 422 esperado; as respostas reais foram preservadas em evidências JSON extraídas dos anexos da execução.
 - A matriz passou a contabilizar 48 cenários definidos. Os resultados do complemento foram incorporados ao relatório de execução sem classificar falhas como bugs.
+
+## Etapa 6 - Relatórios de bug e marcação dos testes
+
+- Foram criados os relatórios BUG-001 a BUG-004, com dados provenientes das evidências e das execuções registradas; informações manuais sem captura ou horário foram identificadas como relatos não verificáveis no repositório.
+- Os 10 casos automatizados correspondentes foram marcados com `test.fail` sem alterar suas expectativas ou títulos. As suítes executaram 34 casos de API e 10 de interface; o Playwright reportou 44 aprovados, incluindo 10 falhas esperadas, e zero falhas inesperadas.
+- A seção de falhas e o resumo em `docs/03-execucao-dos-testes.md` receberam os vínculos para os relatórios e as contagens da execução. Os prints manuais ausentes foram listados como pendentes nos relatórios.

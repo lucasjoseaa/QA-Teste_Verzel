@@ -59,6 +59,7 @@ test.describe('Validação do cliente', () => {
 
   for (const nome of ['lucas1 jose2', 'lucas@ jose#', 'lucas1 jose@']) {
     test(`CT-CLIENTE-05: Recusar nome com número ou símbolo - ${nome}`, async ({ request }) => {
+      test.fail(true, 'BUG-003: o nome aceita números e símbolos');
       const endpoint = '/api/pedidos';
       const corpoEnviado = criarCorpoPedido(
         [criarItem('P005', 1)],
@@ -73,6 +74,7 @@ test.describe('Validação do cliente', () => {
   }
 
   test('CT-CLIENTE-06: Recusar e-mail com caracteres inválidos no domínio', async ({ request }) => {
+    test.fail(true, 'BUG-004: o e-mail aceita caracteres inválidos no domínio');
     const endpoint = '/api/pedidos';
     const corpoEnviado = criarCorpoPedido(
       [criarItem('P005', 1)],

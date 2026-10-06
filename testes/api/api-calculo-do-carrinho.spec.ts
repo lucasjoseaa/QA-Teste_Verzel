@@ -27,6 +27,7 @@ test.describe('API de cálculo do carrinho', () => {
   });
 
   test('CT-API-CARRINHO-02: Calcular carrinho sem cupom com subtotal exato de 200', async ({ request }) => {
+    test.fail(true, 'BUG-001: frete grátis não é aplicado no subtotal exato de R$ 200,00');
     const resposta = await request.post('/api/carrinho/calcular', {
       data: criarCorpoCarrinho([criarItem('P005', 2)]),
     });
@@ -87,6 +88,7 @@ test.describe('API de cálculo do carrinho', () => {
   });
 
   test('CT-API-CARRINHO-08: Calcular frete grátis com cupom sobre subtotal de R$ 200,00', async ({ request }) => {
+    test.fail(true, 'BUG-001: frete grátis não é aplicado no subtotal exato de R$ 200,00');
     const resposta = await request.post('/api/carrinho/calcular', {
       data: criarCorpoCarrinho([criarItem('P005', 2)], cupons.valido),
     });
