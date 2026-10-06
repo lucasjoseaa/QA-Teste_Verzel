@@ -1,0 +1,17 @@
+{
+  "name": "teste-qa-verzel-lucas-jose",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "test": "playwright test",
+    "test:api": "playwright test --project=api",
+    "test:interface": "playwright test --project=interface",
+    "test:headed": "playwright test --headed",
+    "relatorio": "playwright show-report"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.63.0",
+    "@types/node": "^26.6.4",
+    "typescript": "^7.0.2"
+  }
+}
