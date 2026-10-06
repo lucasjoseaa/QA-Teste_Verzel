@@ -39,8 +39,8 @@ export function criarCorpoCarrinho(itens: ItemCarrinho[], cupom?: string) {
 
 export function criarClienteValido(alteracoes: Partial<Cliente> = {}): Cliente {
   return {
-    nome: 'Maria Silva',
-    email: 'maria@exemplo.com',
+    nome: 'Lucas José',
+    email: 'lucas@exemplo.com',
     cep: '01310-100',
     ...alteracoes,
   };
