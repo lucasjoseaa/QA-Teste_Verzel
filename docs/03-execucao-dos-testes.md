@@ -56,7 +56,7 @@ Os relatórios JSON e as saídas completas de texto foram gerados em arquivos te
 | CT-QUANTIDADE-01 | O kit de meias aceita até 5 unidades | Interface | Automatizado | Passou | — | — |
 | CT-QUANTIDADE-02 | O carrinho bloqueia a sexta unidade do kit de meias | Interface | Automatizado | Passou | — | A execução observou o limite de 5 unidades. |
 | CT-QUANTIDADE-03 | API aceita até 5 unidades do kit de meias | API | Automatizado | Passou | — | — |
-| CT-QUANTIDADE-04 | API rejeita quantidade acima do limite | API | Automatizado | Falhou (0 de 2 exemplos passaram) | [Resposta de cálculo](./evidencias/api/CT-QUANTIDADE-04-api-carrinho-calcular-resposta.txt); [resposta de pedido](./evidencias/api/CT-QUANTIDADE-04-api-pedidos-resposta.txt) | Esperado para ambos os endpoints: status 422 e código `QUANTIDADE_MAXIMA_EXCEDIDA` (seção de códigos de erro); obtido: status 200 em `/api/carrinho/calcular` e status 201 em `/api/pedidos`. Divergência com a documentação, a classificar como defeito na Etapa 6. |
+| CT-QUANTIDADE-04 | API rejeita quantidade acima do limite | API | Automatizado | Falhou (0 de 2 exemplos passaram) | [Resposta de cálculo](./evidencias/api/CT-QUANTIDADE-04-api-carrinho-calcular-resposta.json); [resposta de pedido](./evidencias/api/CT-QUANTIDADE-04-api-pedidos-resposta.json) | Esperado para ambos os endpoints: status 422 e código `QUANTIDADE_MAXIMA_EXCEDIDA` (seção de códigos de erro); obtido: status 200 em `/api/carrinho/calcular` e status 201 em `/api/pedidos`. Divergência com a documentação, a classificar como defeito na Etapa 6. |
 | CT-QUANTIDADE-05 | API rejeita quantidade inválida | API | Automatizado | Passou (3 de 3 exemplos) | — | — |
 
 ### 2.4 Cálculo do carrinho
@@ -72,13 +72,13 @@ Os relatórios JSON e as saídas completas de texto foram gerados em arquivos te
 | ID | Título | Camada | Tipo | Resultado | Evidência | Observação |
 |---|---|---|---|---|---|---|
 | CT-API-CARRINHO-01 | Calcular carrinho com exemplo da documentação | API | Automatizado | Passou | — | — |
-| CT-API-CARRINHO-02 | Calcular carrinho sem cupom com subtotal exato de 200 | API | Automatizado | Falhou | [Resposta](./evidencias/api/CT-API-CARRINHO-02-resposta.txt) | Esperado: status 200, subtotal 200, frete 0 e total 200 (CA06 e matriz); obtido: status 200, subtotal 200, frete 19.9 e total 219.9. Divergência com a documentação, a classificar como defeito na Etapa 6. |
+| CT-API-CARRINHO-02 | Calcular carrinho sem cupom com subtotal exato de 200 | API | Automatizado | Falhou | [Resposta](./evidencias/api/CT-API-CARRINHO-02-resposta.json) | Esperado: status 200, subtotal 200, frete 0 e total 200 (CA06 e matriz); obtido: status 200, subtotal 200, frete 19.9 e total 219.9. Divergência com a documentação, a classificar como defeito na Etapa 6. |
 | CT-API-CARRINHO-03 | Cupom inexistente na API de cálculo | API | Automatizado | Passou | — | — |
 | CT-API-CARRINHO-04 | Cupom expirado na API de cálculo | API | Automatizado | Passou | — | — |
 | CT-API-CARRINHO-05 | Itens vazios são rejeitados na API de cálculo | API | Automatizado | Passou | — | — |
 | CT-API-CARRINHO-06 | Produto inexistente é rejeitado na API de cálculo | API | Automatizado | Passou | — | — |
 | CT-API-CARRINHO-07 | Itens duplicados são rejeitados na API de cálculo | API | Automatizado | Passou | — | — |
-| CT-API-CARRINHO-08 | Calcular frete grátis com cupom sobre subtotal de R$ 200,00 | API | Automatizado | Falhou | [Resposta](./evidencias/api/CT-API-CARRINHO-08-resposta.txt) | Esperado: status 200, subtotal 200, desconto 20, frete 0 e total 180 (CA06, CA08 e matriz); obtido: status 200, subtotal 200, desconto 20, frete 19.9 e total 199.9. Divergência com a documentação, a classificar como defeito na Etapa 6. |
+| CT-API-CARRINHO-08 | Calcular frete grátis com cupom sobre subtotal de R$ 200,00 | API | Automatizado | Falhou | [Resposta](./evidencias/api/CT-API-CARRINHO-08-resposta.json) | Esperado: status 200, subtotal 200, desconto 20, frete 0 e total 180 (CA06, CA08 e matriz); obtido: status 200, subtotal 200, desconto 20, frete 19.9 e total 199.9. Divergência com a documentação, a classificar como defeito na Etapa 6. |
 
 ### 2.6 API de pedidos
 
@@ -124,10 +124,10 @@ Os valores esperados abaixo vêm dos critérios e resultados registrados na docu
 
 | Teste | Esperado e fonte | Obtido na execução | Evidência |
 |---|---|---|---|
-| CT-API-CARRINHO-02 | Frete 0 e total 200 para subtotal 200 (CA06; matriz). | `{"subtotal":200,"desconto":0,"frete":19.9,"freteGratis":false,"valorFaltanteFreteGratis":0,"total":219.9}` | [CT-API-CARRINHO-02-resposta.txt](./evidencias/api/CT-API-CARRINHO-02-resposta.txt) |
-| CT-API-CARRINHO-08 | Frete 0 e total 180 para subtotal 200 com desconto 20 (CA06, CA08; matriz). | `{"subtotal":200,"desconto":20,"frete":19.9,"freteGratis":false,"valorFaltanteFreteGratis":0,"total":199.9}` | [CT-API-CARRINHO-08-resposta.txt](./evidencias/api/CT-API-CARRINHO-08-resposta.txt) |
-| CT-QUANTIDADE-04 — `/api/carrinho/calcular` | Status 422 e `QUANTIDADE_MAXIMA_EXCEDIDA` (seção de códigos de erro; matriz). | Status 200; resposta inclui quantidade 6, subtotal 179.4 e total 199.3. | [Resposta de cálculo](./evidencias/api/CT-QUANTIDADE-04-api-carrinho-calcular-resposta.txt) |
-| CT-QUANTIDADE-04 — `/api/pedidos` | Status 422 e `QUANTIDADE_MAXIMA_EXCEDIDA` (seção de códigos de erro; matriz). | Status 201; resposta inclui quantidade 6, subtotal 179.4 e total 199.3. | [Resposta do pedido](./evidencias/api/CT-QUANTIDADE-04-api-pedidos-resposta.txt) |
+| CT-API-CARRINHO-02 | Frete 0 e total 200 para subtotal 200 (CA06; matriz). | `{"subtotal":200,"desconto":0,"frete":19.9,"freteGratis":false,"valorFaltanteFreteGratis":0,"total":219.9}` | [CT-API-CARRINHO-02-resposta.json](./evidencias/api/CT-API-CARRINHO-02-resposta.json) |
+| CT-API-CARRINHO-08 | Frete 0 e total 180 para subtotal 200 com desconto 20 (CA06, CA08; matriz). | `{"subtotal":200,"desconto":20,"frete":19.9,"freteGratis":false,"valorFaltanteFreteGratis":0,"total":199.9}` | [CT-API-CARRINHO-08-resposta.json](./evidencias/api/CT-API-CARRINHO-08-resposta.json) |
+| CT-QUANTIDADE-04 — `/api/carrinho/calcular` | Status 422 e `QUANTIDADE_MAXIMA_EXCEDIDA` (seção de códigos de erro; matriz). | Status 200; resposta inclui quantidade 6, subtotal 179.4 e total 199.3. | [Resposta de cálculo](./evidencias/api/CT-QUANTIDADE-04-api-carrinho-calcular-resposta.json) |
+| CT-QUANTIDADE-04 — `/api/pedidos` | Status 422 e `QUANTIDADE_MAXIMA_EXCEDIDA` (seção de códigos de erro; matriz). | Status 201; resposta inclui quantidade 6, subtotal 179.4 e total 199.3. | [Resposta do pedido](./evidencias/api/CT-QUANTIDADE-04-api-pedidos-resposta.json) |
 | CT-FRETE-02 | Frete R$ 0,00 e total R$ 200,00 para subtotal R$ 200,00 (CA06; matriz e feature). | Tela: subtotal R$ 200,00; frete R$ 19,90; total R$ 219,90. | [CT-FRETE-02.png](./evidencias/interface/CT-FRETE-02.png) |
 | CT-FRETE-04 | Desconto R$ 20,00, frete R$ 0,00 e total R$ 180,00 (CA06, CA08, CA09; matriz e feature). | Tela: subtotal R$ 200,00; desconto - R$ 20,00; frete R$ 19,90; total R$ 199,90. | [CT-FRETE-04.png](./evidencias/interface/CT-FRETE-04.png) |
 
