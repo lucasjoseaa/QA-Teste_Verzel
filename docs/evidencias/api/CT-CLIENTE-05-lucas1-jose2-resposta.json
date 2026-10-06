@@ -1,0 +1,44 @@
+{
+  "cenario": "CT-CLIENTE-05",
+  "endpoint": "/api/pedidos",
+  "metodo": "POST",
+  "corpoEnviado": {
+    "cliente": {
+      "nome": "lucas1 jose2",
+      "email": "maria@exemplo.com",
+      "cep": "01310-100"
+    },
+    "itens": [
+      {
+        "produtoId": "P005",
+        "quantidade": 1
+      }
+    ]
+  },
+  "status": 201,
+  "respostaRecebida": {
+    "numero": "VZ-271642",
+    "criadoEm": "2026-10-06T22:56:21.966Z",
+    "cliente": {
+      "nome": "lucas1 jose2",
+      "email": "maria@exemplo.com",
+      "cep": "01310100"
+    },
+    "itens": [
+      {
+        "produtoId": "P005",
+        "nome": "Mochila Urbana 20L",
+        "precoUnitario": 100,
+        "quantidade": 1,
+        "total": 100
+      }
+    ],
+    "subtotal": 100,
+    "desconto": 0,
+    "frete": 19.9,
+    "freteGratis": false,
+    "valorFaltanteFreteGratis": 100,
+    "total": 119.9,
+    "cupom": null
+  }
+}

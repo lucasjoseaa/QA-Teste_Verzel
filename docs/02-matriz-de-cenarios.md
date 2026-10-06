@@ -12,17 +12,17 @@ Legenda: CT = caso de teste, CAnn = critério de aceite, BUG-NNN = defeito.
 | Cálculo do carrinho | 3 |
 | API de cálculo do carrinho | 8 |
 | API de pedidos | 3 |
-| Validação do cliente | 4 |
+| Validação do cliente | 6 |
 | API de produtos e rotas | 6 |
 | Fluxo da interface | 5 |
-| Total | 46 |
+| Total | 48 |
 
 ## 2. Resumo por tipo
 
 | Tipo | Quantidade |
 | --- | ---: |
-| Automatizado | 29 |
-| Manual | 15 |
+| Automatizado | 32 |
+| Manual | 14 |
 | Exploratório | 2 |
 
 ## 3. Cobertura dos critérios de aceite
@@ -39,7 +39,7 @@ Legenda: CT = caso de teste, CAnn = critério de aceite, BUG-NNN = defeito.
 | CA08 | CT-FRETE-03, CT-FRETE-04, CT-CALCULO-02, CT-API-CARRINHO-08 |
 | CA09 | CT-FRETE-04, CT-FRETE-05, CT-API-CARRINHO-01 |
 | CA10 | CT-QUANTIDADE-01, CT-QUANTIDADE-02, CT-QUANTIDADE-03, CT-QUANTIDADE-04, CT-QUANTIDADE-05, CT-API-CARRINHO-05, CT-API-CARRINHO-06, CT-API-CARRINHO-07 |
-| CA11 | CT-CALCULO-01, CT-CALCULO-02, CT-CALCULO-03, CT-API-CARRINHO-01, CT-API-CARRINHO-02 |
+| CA11 | CT-CALCULO-01, CT-CALCULO-02, CT-CALCULO-03, CT-API-CARRINHO-01, CT-API-CARRINHO-02, CT-CLIENTE-01, CT-CLIENTE-02, CT-CLIENTE-03, CT-CLIENTE-04, CT-CLIENTE-05, CT-CLIENTE-06 |
 
 ## 4. Cupom de desconto
 
@@ -110,6 +110,8 @@ Legenda: CT = caso de teste, CAnn = critério de aceite, BUG-NNN = defeito.
 | CT-CLIENTE-02 | CA11 | E-mails inválidos são rejeitados. | API acessível. | Outline com maria, maria@, maria@exemplo. | Status 422; erro DADOS_INVALIDOS. | API | Automatizado | Alta |
 | CT-CLIENTE-03 | CA11 | CEP inválido é rejeitado. | API acessível. | Outline com 7 dígitos, 9 dígitos e letras. | Status 422; erro DADOS_INVALIDOS. | API | Automatizado | Média |
 | CT-CLIENTE-04 | CA11 | CEP com hífen e sem hífen são aceitos. | API acessível. | CEP 01310-100 e 01310100. | Status 201 em ambos; formato retornado registrado. | API | Manual | Média |
+| CT-CLIENTE-05 | CA11 | Recusar nome com número ou símbolo. | API acessível. | Outline com os nomes `lucas1 jose2`, `lucas@ jose#` e `lucas1 jose@`; P005 x1; demais dados válidos. | Status 422; erro DADOS_INVALIDOS. A documentação exige nome e sobrenome, mas não define caracteres permitidos. Expectativa baseada em validação usual de nomes (requisito implícito), não em regra explícita; revisar. | API | Automatizado | Média |
+| CT-CLIENTE-06 | CA11 | Recusar e-mail com caracteres inválidos no domínio. | API acessível. | P005 x1; e-mail `usuario@!#%.com`; demais dados válidos. | Status 422; erro DADOS_INVALIDOS, conforme requisito documentado de e-mail válido. | API | Automatizado | Média |
 
 ## 11. API de produtos e rotas
 

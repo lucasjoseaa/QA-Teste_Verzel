@@ -41,3 +41,23 @@ Funcionalidade: Validação do cliente
     E quando envio a mesma requisição com CEP "01310100"
     E a resposta também tem status 201
     E o formato do CEP retornado deve ser registrado
+
+  @CT-CLIENTE-05 @CA11 @api @automatizado
+  Esquema do Cenário: Recusar nome com número ou símbolo
+    Quando envio uma requisição POST para "/api/pedidos" com cliente válido, nome "<nome>" e o item "P005" em quantidade 1
+    Então a resposta tem status 422
+    E o campo "erro.codigo" é "DADOS_INVALIDOS"
+
+    Exemplos:
+      | nome         |
+      | lucas1 jose2 |
+      | lucas@ jose# |
+      | lucas1 jose@ |
+
+  @CT-CLIENTE-06 @CA11 @api @automatizado
+  Cenário: Recusar e-mail com caracteres inválidos no domínio
+    Quando envio uma requisição POST para "/api/pedidos" com cliente válido, exceto o e-mail "usuario@!#%.com"
+    Então a resposta tem status 422
+    E o campo "erro.codigo" é "DADOS_INVALIDOS"
+
+  # A documentação exige nome e sobrenome, mas não define caracteres permitidos; a expectativa é implícita e requer revisão.

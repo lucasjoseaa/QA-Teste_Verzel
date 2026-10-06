@@ -35,3 +35,9 @@
 - Foram executadas as suítes de API e interface com relatórios JSON e saída textual temporários; os resultados reais foram registrados em `docs/03-execucao-dos-testes.md`.
 - Foram preservadas as respostas HTTP reais dos casos de API reprovados e as capturas reais do Playwright dos casos de interface reprovados.
 - Foram criados o roteiro dos cenários manuais e exploratórios e a convenção da pasta de evidências; nenhum cenário manual ou exploratório foi marcado como executado.
+
+## Etapa 5 - Complemento: validação do cliente na API
+
+- Foram adicionados CT-CLIENTE-05 e CT-CLIENTE-06 à especificação e à matriz, além de quatro testes de API (três exemplos de nomes e um caso de e-mail).
+- A execução real da suíte de API teve 34 testes: 26 passaram e 8 falharam. Os quatro testes novos retornaram HTTP 201, em vez do status 422 esperado; as respostas reais foram preservadas em evidências JSON extraídas dos anexos da execução.
+- A matriz passou a contabilizar 48 cenários definidos. Os resultados do complemento foram incorporados ao relatório de execução sem classificar falhas como bugs.
