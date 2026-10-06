@@ -165,7 +165,16 @@ Os campos abaixo permanecem em branco para preenchimento pelo responsável após
 ## 5. Observações
 
 - Os relatórios JSON e as saídas textuais foram temporários; não foram mantidos no repositório. As evidências de falha estão preservadas na pasta de evidências.
-- As quatro respostas novas de validação do cliente foram preservadas dos anexos JSON gerados pelos próprios testes nesta execução, sem novas requisições.
+- As respostas de validação do cliente foram preservadas dos anexos JSON gerados pelos próprios testes, sem reconstruir ou alterar os corpos recebidos.
+- Em 06/10/2026 às 20:21:06 (UTC−03:00), a suíte de API foi reexecutada após a atualização dos dados padrão do cliente. Dos 34 testes, 26 passaram e 8 falharam, os mesmos totais da execução anterior. Os JSONs abaixo contêm as respostas reais desta reexecução e substituem as evidências anteriores dos mesmos cenários, mantendo um arquivo por cenário.
+
+| Cenário | Nome enviado | E-mail enviado | Resultado | Evidência atual |
+|---|---|---|---|---|
+| CT-CLIENTE-05 — `lucas1 jose2` | `lucas1 jose2` | `lucas@exemplo.com` | Falhou; HTTP 201 | [JSON](./evidencias/api/CT-CLIENTE-05-lucas1-jose2-resposta.json) |
+| CT-CLIENTE-05 — `lucas@ jose#` | `lucas@ jose#` | `lucas@exemplo.com` | Falhou; HTTP 201 | [JSON](./evidencias/api/CT-CLIENTE-05-lucas-jose-resposta.json) |
+| CT-CLIENTE-05 — `lucas1 jose@` | `lucas1 jose@` | `lucas@exemplo.com` | Falhou; HTTP 201 | [JSON](./evidencias/api/CT-CLIENTE-05-lucas1-jose-resposta.json) |
+| CT-CLIENTE-06 | `Lucas José` | `usuario@!#%.com` | Falhou; HTTP 201 | [JSON](./evidencias/api/CT-CLIENTE-06-email-invalido-resposta.json) |
+- Em 06/10/2026 às 20:26:13 (UTC−03:00), foi reexecutado isoladamente o exemplo CT-QUANTIDADE-04 de `/api/pedidos` para atualizar os dados do cliente da evidência. O teste falhou novamente: esperava HTTP 422 e recebeu HTTP 201. O único JSON do cenário foi substituído pela captura real dessa execução; agora registra o nome `Lucas José` e o e-mail `lucas@exemplo.com`.
 - Os cenários manuais e exploratórios permanecem sem execução e sem evidência nesta etapa.
 - A tela de fechamento do pedido não foi exercitada nesta etapa.
 - A matriz informa 29 cenários automatizados e 15 manuais; a contagem dos IDs classificados nas suas linhas resulta em 30 automatizados e 14 manuais, além de 2 exploratórios. A contagem de cenários totaliza 46. A divergência está registrada para revisão, sem alterar a matriz.

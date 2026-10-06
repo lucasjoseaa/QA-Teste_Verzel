@@ -23,8 +23,29 @@ test.describe('Limite de quantidade na API', () => {
         ? criarCorpoPedido([criarItem('P006', 6)])
         : criarCorpoCarrinho([criarItem('P006', 6)]);
       const resposta = await request.post(endpoint, { data: dados });
+      const corpoRecebido: unknown = await resposta.json();
+      if (endpoint === '/api/pedidos') {
+        await test.info().attach('CT-QUANTIDADE-04-api-pedidos-resposta', {
+          body: Buffer.from(JSON.stringify({
+            cenario: 'CT-QUANTIDADE-04',
+            endpoint,
+            metodo: 'POST',
+            corpoEnviado: dados,
+            status: resposta.status(),
+            respostaRecebida: corpoRecebido,
+          }, null, 2)),
+          contentType: 'application/json',
+        });
+        console.log(JSON.stringify({
+          cenario: 'CT-QUANTIDADE-04',
+          endpoint,
+          status: resposta.status(),
+          corpoEnviado: dados,
+          respostaRecebida: corpoRecebido,
+        }));
+      }
       expect(resposta.status()).toBe(422);
-      esperarErro(await resposta.json(), 'QUANTIDADE_MAXIMA_EXCEDIDA');
+      esperarErro(corpoRecebido, 'QUANTIDADE_MAXIMA_EXCEDIDA');
     });
   }
 

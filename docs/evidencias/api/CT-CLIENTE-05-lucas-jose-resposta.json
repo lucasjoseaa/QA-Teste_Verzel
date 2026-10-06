@@ -5,7 +5,7 @@
   "corpoEnviado": {
     "cliente": {
       "nome": "lucas@ jose#",
-      "email": "maria@exemplo.com",
+      "email": "lucas@exemplo.com",
       "cep": "01310-100"
     },
     "itens": [
@@ -17,11 +17,11 @@
   },
   "status": 201,
   "respostaRecebida": {
-    "numero": "VZ-045397",
-    "criadoEm": "2026-10-06T22:56:22.641Z",
+    "numero": "VZ-626198",
+    "criadoEm": "2026-10-06T23:20:10.179Z",
     "cliente": {
       "nome": "lucas@ jose#",
-      "email": "maria@exemplo.com",
+      "email": "lucas@exemplo.com",
       "cep": "01310100"
     },
     "itens": [

@@ -4,8 +4,8 @@
   "metodo": "POST",
   "corpoEnviado": {
     "cliente": {
-      "nome": "Maria Silva",
-      "email": "maria@exemplo.com",
+      "nome": "Lucas José",
+      "email": "lucas@exemplo.com",
       "cep": "01310-100"
     },
     "itens": [
@@ -17,11 +17,11 @@
   },
   "status": 201,
   "respostaRecebida": {
-    "numero": "VZ-341471",
-    "criadoEm": "2026-10-06T22:12:22.614Z",
+    "numero": "VZ-626680",
+    "criadoEm": "2026-10-06T23:25:09.514Z",
     "cliente": {
-      "nome": "Maria Silva",
-      "email": "maria@exemplo.com",
+      "nome": "Lucas José",
+      "email": "lucas@exemplo.com",
       "cep": "01310100"
     },
     "itens": [
