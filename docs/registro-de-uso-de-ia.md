@@ -29,3 +29,9 @@
 - Foram criados Page Objects para vitrine e carrinho, uma função de conversão de valores monetários para centavos e testes para os cenários de interface automatizados solicitados.
 - `npm run test:interface` executou 10 testes: 8 passaram e 2 falharam porque a tela exibiu frete de R$ 19,90 em CT-FRETE-02 e CT-FRETE-04, cujos resultados esperados documentados indicam R$ 0,00.
 - `npx tsc --noEmit` foi executado e terminou com código de saída 0.
+
+## Etapa 5 - Execução, resultados e evidências
+
+- Foram executadas as suítes de API e interface com relatórios JSON e saída textual temporários; os resultados reais foram registrados em `docs/03-execucao-dos-testes.md`.
+- Foram preservadas as respostas HTTP reais dos casos de API reprovados e as capturas reais do Playwright dos casos de interface reprovados.
+- Foram criados o roteiro dos cenários manuais e exploratórios e a convenção da pasta de evidências; nenhum cenário manual ou exploratório foi marcado como executado.

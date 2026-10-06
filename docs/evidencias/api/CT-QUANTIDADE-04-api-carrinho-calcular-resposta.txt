@@ -1,0 +1,13 @@
+Endpoint: POST /api/carrinho/calcular
+Status: 200
+Corpo da requisição:
+{
+  "itens": [
+    {
+      "produtoId": "P006",
+      "quantidade": 6
+    }
+  ]
+}
+Resposta real (corpo bruto):
+{"itens":[{"produtoId":"P006","nome":"Kit 3 Pares de Meias","precoUnitario":29.9,"quantidade":6,"total":179.4}],"subtotal":179.4,"desconto":0,"frete":19.9,"freteGratis":false,"valorFaltanteFreteGratis":20.6,"total":199.3,"cupom":null}
