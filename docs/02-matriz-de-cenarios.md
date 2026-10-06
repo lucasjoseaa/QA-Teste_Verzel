@@ -10,18 +10,18 @@ Legenda: CT = caso de teste, CAnn = critério de aceite, BUG-NNN = defeito.
 | Frete grátis | 6 |
 | Limite de quantidade | 5 |
 | Cálculo do carrinho | 3 |
-| API de cálculo do carrinho | 7 |
+| API de cálculo do carrinho | 8 |
 | API de pedidos | 3 |
 | Validação do cliente | 4 |
 | API de produtos e rotas | 6 |
 | Fluxo da interface | 5 |
-| Total | 45 |
+| Total | 46 |
 
 ## 2. Resumo por tipo
 
 | Tipo | Quantidade |
 | --- | ---: |
-| Automatizado | 28 |
+| Automatizado | 29 |
 | Manual | 15 |
 | Exploratório | 2 |
 
@@ -34,9 +34,9 @@ Legenda: CT = caso de teste, CAnn = critério de aceite, BUG-NNN = defeito.
 | CA03 | CT-CUPOM-03, CT-API-CARRINHO-03, CT-API-PEDIDOS-02 |
 | CA04 | CT-CUPOM-04, CT-API-CARRINHO-04, CT-API-PEDIDOS-03 |
 | CA05 | CT-CUPOM-05 |
-| CA06 | CT-FRETE-02, CT-FRETE-04, CT-CALCULO-02, CT-API-CARRINHO-02, CT-API-PEDIDOS-01 |
+| CA06 | CT-FRETE-02, CT-FRETE-04, CT-CALCULO-02, CT-API-CARRINHO-02, CT-API-CARRINHO-08, CT-API-PEDIDOS-01 |
 | CA07 | CT-FRETE-01, CT-FRETE-03, CT-FRETE-06, CT-CUPOM-06 |
-| CA08 | CT-FRETE-03, CT-FRETE-04, CT-CALCULO-02 |
+| CA08 | CT-FRETE-03, CT-FRETE-04, CT-CALCULO-02, CT-API-CARRINHO-08 |
 | CA09 | CT-FRETE-04, CT-FRETE-05, CT-API-CARRINHO-01 |
 | CA10 | CT-QUANTIDADE-01, CT-QUANTIDADE-02, CT-QUANTIDADE-03, CT-QUANTIDADE-04, CT-QUANTIDADE-05, CT-API-CARRINHO-05, CT-API-CARRINHO-06, CT-API-CARRINHO-07 |
 | CA11 | CT-CALCULO-01, CT-CALCULO-02, CT-CALCULO-03, CT-API-CARRINHO-01, CT-API-CARRINHO-02 |
@@ -92,6 +92,7 @@ Legenda: CT = caso de teste, CAnn = critério de aceite, BUG-NNN = defeito.
 | CT-API-CARRINHO-05 | CA10 | Itens vazios são rejeitados. | API acessível. | Lista de itens vazia. | Status 422; erro ITENS_OBRIGATORIOS. | API | Automatizado | Média |
 | CT-API-CARRINHO-06 | CA10 | Produto inexistente é rejeitado. | API acessível. | P999 x1. | Status 422; erro PRODUTO_NAO_ENCONTRADO. | API | Automatizado | Média |
 | CT-API-CARRINHO-07 | CA10 | Itens duplicados são rejeitados. | API acessível. | Mesmo produto em duas linhas. | Status 422; erro ITEM_DUPLICADO. | API | Automatizado | Média |
+| CT-API-CARRINHO-08 | CA06, CA08 | Calcular frete grátis com cupom sobre subtotal de R$ 200,00. | API acessível. | POST /api/carrinho/calcular com P005 x2 e BEMVINDO10. | Status 200; subtotal 200; desconto 20; frete 0; total 180. | API | Automatizado | Alta |
 
 ## 9. API de pedidos
 

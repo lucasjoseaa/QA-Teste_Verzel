@@ -54,3 +54,12 @@ Funcionalidade: API de cálculo do carrinho
     Quando envio uma requisição POST para "/api/carrinho/calcular" com o item "P005" duplicado em duas linhas
     Então a resposta tem status 422
     E o campo "erro.codigo" é "ITEM_DUPLICADO"
+
+  @CT-API-CARRINHO-08 @CA06 @CA08 @api @automatizado
+  Cenário: Calcular frete grátis com cupom sobre subtotal de R$ 200,00
+    Quando envio uma requisição POST para "/api/carrinho/calcular" com os itens "P005" em quantidade 2 e cupom "BEMVINDO10"
+    Então a resposta tem status 200
+    E o campo "subtotal" é 200
+    E o campo "desconto" é 20
+    E o campo "frete" é 0
+    E o campo "total" é 180

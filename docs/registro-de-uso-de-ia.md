@@ -16,3 +16,9 @@
 - Foi lida a análise da documentação e os critérios de aceite foram mapeados para a matriz de cenários e para os arquivos de especificação em Gherkin.
 - Foram criados os arquivos feature correspondentes aos 45 cenários previstos pela etapa, incluindo o arquivo novo de fluxo da interface.
 - Foi registrada a matriz de cenários com cobertura por área, por tipo e por critério de aceite, sem inventar regras, mensagens ou resultados que não constem na documentação.
+
+## Etapa 3 - Automação dos testes de API
+
+- Foram criados testes Playwright de API com os cenários automatizados das especificações de produtos e rotas, cálculo do carrinho, pedidos, validação do cliente e limite de quantidade.
+- Foi acrescentado o cenário CT-API-CARRINHO-08 à matriz e à especificação, e foram criados utilitários compartilhados para produtos, cupons, requisições e comparação monetária em centavos.
+- Foram executados `npm run test:api` e `npx tsc --noEmit`; os resultados foram comunicados na conclusão desta etapa.
