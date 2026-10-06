@@ -22,3 +22,10 @@
 - Foram criados testes Playwright de API com os cenários automatizados das especificações de produtos e rotas, cálculo do carrinho, pedidos, validação do cliente e limite de quantidade.
 - Foi acrescentado o cenário CT-API-CARRINHO-08 à matriz e à especificação, e foram criados utilitários compartilhados para produtos, cupons, requisições e comparação monetária em centavos.
 - Foram executados `npm run test:api` e `npx tsc --noEmit`; os resultados foram comunicados na conclusão desta etapa.
+
+## Etapa 4 - Automação dos testes de interface
+
+- Foi executado um script temporário de descoberta com Playwright para inspecionar vitrine, carrinho, cupom, resumo e mecanismo do limite de quantidade; o script foi removido após a descoberta.
+- Foram criados Page Objects para vitrine e carrinho, uma função de conversão de valores monetários para centavos e testes para os cenários de interface automatizados solicitados.
+- `npm run test:interface` executou 10 testes: 8 passaram e 2 falharam porque a tela exibiu frete de R$ 19,90 em CT-FRETE-02 e CT-FRETE-04, cujos resultados esperados documentados indicam R$ 0,00.
+- `npx tsc --noEmit` foi executado e terminou com código de saída 0.
