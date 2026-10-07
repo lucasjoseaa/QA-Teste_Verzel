@@ -138,19 +138,8 @@ Em ambas as respostas, `valorFaltanteFreteGratis` é 0, embora `freteGratis` sej
 
 - [CT-API-CARRINHO-02-resposta.json](../evidencias/api/CT-API-CARRINHO-02-resposta.json) — requisição e resposta do cálculo sem cupom.
 - [CT-API-CARRINHO-08-resposta.json](../evidencias/api/CT-API-CARRINHO-08-resposta.json) — requisição e resposta do cálculo com BEMVINDO10.
-- ![CT-FRETE-02: carrinho sem cupom](../evidencias/interface/CT-FRETE-02.png)
-- ![CT-FRETE-04: carrinho com BEMVINDO10](../evidencias/interface/CT-FRETE-04.png)
-- ![BUG-001: captura manual do carrinho sem cupom, ainda não anexada](../evidencias/manual/BUG-001-carrinho-sem-cupom.png)
-- ![BUG-001: captura manual do carrinho com cupom, ainda não anexada](../evidencias/manual/BUG-001-carrinho-com-cupom.png)
-
-### Evidências a anexar
-
-- [x] `docs/evidencias/api/CT-API-CARRINHO-02-resposta.json`
-- [x] `docs/evidencias/api/CT-API-CARRINHO-08-resposta.json`
-- [x] `docs/evidencias/interface/CT-FRETE-02.png`
-- [x] `docs/evidencias/interface/CT-FRETE-04.png`
-- [ ] `docs/evidencias/manual/BUG-001-carrinho-sem-cupom.png`
-- [ ] `docs/evidencias/manual/BUG-001-carrinho-com-cupom.png`
+- ![BUG-001: captura manual do carrinho sem cupom](../evidencias/manual/BUG-001-carrinho-sem-cupom.png)
+- ![BUG-001: captura manual do carrinho com cupom](../evidencias/manual/BUG-001-carrinho-com-cupom.png)
 
 ## 11. Impacto
 
@@ -164,4 +153,4 @@ O cliente pode pagar frete em uma compra que atende ao limite documentado para f
 
 - A resposta da API é internamente inconsistente: informa `valorFaltanteFreteGratis: 0`, mas mantém `freteGratis: false` e cobra frete.
 - Não foi reportado CT-CALCULO-01: consta como manual e não executado no relatório de execução.
-- As capturas manuais previstas não existem no repositório. A evidência disponível é automatizada.
+- As capturas manuais do carrinho sem cupom e com cupom estão anexadas.
