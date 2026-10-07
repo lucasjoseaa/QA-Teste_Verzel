@@ -193,18 +193,9 @@ Todos os três casos retornaram HTTP 201 e preservaram o nome enviado na respost
 - [CT-CLIENTE-05-lucas1-jose2-resposta.json](../evidencias/api/CT-CLIENTE-05-lucas1-jose2-resposta.json) — resposta para nome com números.
 - [CT-CLIENTE-05-lucas-jose-resposta.json](../evidencias/api/CT-CLIENTE-05-lucas-jose-resposta.json) — resposta para nome com símbolos.
 - [CT-CLIENTE-05-lucas1-jose-resposta.json](../evidencias/api/CT-CLIENTE-05-lucas1-jose-resposta.json) — resposta para nome com número e símbolo.
-- ![BUG-003: captura manual do nome com números, ainda não anexada](../evidencias/manual/BUG-003-nome-numero.png)
-- ![BUG-003: captura manual do nome com símbolos, ainda não anexada](../evidencias/manual/BUG-003-nome-simbolo.png)
-- ![BUG-003: captura manual do nome com número e símbolo, ainda não anexada](../evidencias/manual/BUG-003-nome-numero-simbolo.png)
-
-### Evidências a anexar
-
-- [x] `docs/evidencias/api/CT-CLIENTE-05-lucas1-jose2-resposta.json`
-- [x] `docs/evidencias/api/CT-CLIENTE-05-lucas-jose-resposta.json`
-- [x] `docs/evidencias/api/CT-CLIENTE-05-lucas1-jose-resposta.json`
-- [ ] `docs/evidencias/manual/BUG-003-nome-numero.png`
-- [ ] `docs/evidencias/manual/BUG-003-nome-simbolo.png`
-- [ ] `docs/evidencias/manual/BUG-003-nome-numero-simbolo.png`
+- ![BUG-003: captura manual do nome com números](../evidencias/manual/BUG-003-nome-numero.png)
+- ![BUG-003: captura manual do nome com símbolos](../evidencias/manual/BUG-003-nome-simbolo.png)
+- ![BUG-003: captura manual do nome com número e símbolo](../evidencias/manual/BUG-003-nome-numero-simbolo.png)
 
 ## 11. Impacto
 
@@ -220,3 +211,4 @@ Não identificada. Não houve inspeção do código de validação.
 - Os testes usam e-mail `lucas@exemplo.com` e CEP `01310-100`, conforme os corpos e evidências atuais.
 - A informação sobre a interface foi fornecida na solicitação desta Etapa; não há arquivo de execução, horário ou captura no repositório que permita verificá-la independentemente.
 - O campo de navegador da execução manual precisa ser preenchido pelo responsável.
+- As capturas manuais dos três casos de nome estão anexadas.
