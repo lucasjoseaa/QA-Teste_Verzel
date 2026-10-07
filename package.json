@@ -7,7 +7,8 @@
     "test:api": "playwright test --project=api",
     "test:interface": "playwright test --project=interface",
     "test:headed": "playwright test --headed",
-    "relatorio": "playwright show-report"
+    "relatorio": "playwright show-report",
+    "verificar-tipos": "tsc --noEmit"
   },
   "devDependencies": {
     "@playwright/test": "^1.63.0",

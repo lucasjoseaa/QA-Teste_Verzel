@@ -1,0 +1,115 @@
+name: Testes automatizados
+
+# Executa nas branches principais e também sob demanda.
+on:
+  push:
+    branches: [master, main]
+  pull_request:
+    branches: [master, main]
+  workflow_dispatch:
+
+# Limita o acesso do workflow ao conteúdo do repositório.
+permissions:
+  contents: read
+
+# Cancela execuções antigas da mesma branch.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  URL_BASE: https://verzel-store.qa-test-verzel-store.workers.dev
+
+jobs:
+  tipos:
+    name: Verificação de tipos
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      # Prepara o código e o Node.js LTS com cache do npm.
+      - name: Baixar o repositório
+        uses: actions/checkout@v7.0.1
+
+      - name: Configurar Node.js LTS
+        uses: actions/setup-node@v7.0.0
+        with:
+          node-version: lts/*
+          cache: npm
+
+      # Instala as dependências travadas e valida os tipos.
+      - name: Instalar dependências
+        run: npm ci
+
+      - name: Verificar tipos
+        run: npm run verificar-tipos
+
+  api:
+    name: Testes de API
+    needs: tipos
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      # Prepara o código e o Node.js LTS com cache do npm.
+      - name: Baixar o repositório
+        uses: actions/checkout@v7.0.1
+
+      - name: Configurar Node.js LTS
+        uses: actions/setup-node@v7.0.0
+        with:
+          node-version: lts/*
+          cache: npm
+
+      # Instala as dependências e executa os testes de API.
+      - name: Instalar dependências
+        run: npm ci
+
+      - name: Executar testes de API
+        run: npm run test:api
+
+      # Preserva relatório e resultados mesmo se os testes falharem.
+      - name: Publicar artefatos da API
+        if: always()
+        uses: actions/upload-artifact@v7.0.1
+        with:
+          name: relatorios-testes-api
+          path: |
+            playwright-report/
+            test-results/
+          retention-days: 14
+
+  interface:
+    name: Testes de interface
+    needs: tipos
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      # Prepara o código e o Node.js LTS com cache do npm.
+      - name: Baixar o repositório
+        uses: actions/checkout@v7.0.1
+
+      - name: Configurar Node.js LTS
+        uses: actions/setup-node@v7.0.0
+        with:
+          node-version: lts/*
+          cache: npm
+
+      # Instala dependências e somente o Chromium usado pelos testes.
+      - name: Instalar dependências
+        run: npm ci
+
+      - name: Instalar Chromium
+        run: npx playwright install --with-deps chromium
+
+      # Executa os testes de interface e preserva os resultados.
+      - name: Executar testes de interface
+        run: npm run test:interface
+
+      - name: Publicar artefatos da interface
+        if: always()
+        uses: actions/upload-artifact@v7.0.1
+        with:
+          name: relatorios-testes-interface
+          path: |
+            playwright-report/
+            test-results/
+          retention-days: 14
