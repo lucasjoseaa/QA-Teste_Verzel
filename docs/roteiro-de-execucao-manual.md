@@ -1,6 +1,6 @@
 # Roteiro de execução manual
 
-Execute os cenários com baixo volume de interações, pois o ambiente é compartilhado. Registre data, resultado obtido, status e evidência no [registro de execução](./03-execucao-dos-testes.md). A pasta e os nomes de evidência seguem a [convenção](./evidencias/LEIAME.md).
+Execute os cenários com baixo volume de interações, pois o ambiente é compartilhado. Registre data, resultado obtido e status no [registro de execução](./03-execucao-dos-testes.md).
 
 ## Cupom de desconto
 
@@ -13,7 +13,6 @@ Execute os cenários com baixo volume de interações, pois o ambiente é compar
   2. Abra o carrinho e aplique `DESCONTO99`.
   3. Observe mensagem, desconto e total.
 - Resultado esperado: mensagem `Cupom inválido.`, desconto R$ 0,00 e total R$ 119,90.
-- Evidência: `CT-CUPOM-03.png`.
 
 ### CT-CUPOM-04 — Exibir mensagem para cupom expirado
 
@@ -24,7 +23,6 @@ Execute os cenários com baixo volume de interações, pois o ambiente é compar
   2. Abra o carrinho e aplique `VERAO2026`.
   3. Observe mensagem, desconto e total.
 - Resultado esperado: mensagem `Cupom expirado.`, desconto R$ 0,00 e total R$ 119,90.
-- Evidência: `CT-CUPOM-04.png`.
 
 ### CT-CUPOM-05 — Aplicar um segundo cupom sem remover o primeiro
 
@@ -34,7 +32,6 @@ Execute os cenários com baixo volume de interações, pois o ambiente é compar
   1. No campo de cupom, informe um segundo código sem remover o primeiro.
   2. Registre o que a interface permite, o cupom ativo e os valores exibidos.
 - Resultado esperado: não há resultado fixo; registrar o comportamento observado.
-- Evidência: `CT-CUPOM-05.png`.
 
 ### CT-CUPOM-06 — Aplicar cupom em compra abaixo do valor de frete grátis
 
@@ -44,7 +41,6 @@ Execute os cenários com baixo volume de interações, pois o ambiente é compar
   1. Aplique `BEMVINDO10`.
   2. Observe desconto, frete e total.
 - Resultado esperado: desconto R$ 5,99, frete R$ 19,90 e total R$ 73,81.
-- Evidência: `CT-CUPOM-06.png`.
 
 ## Frete grátis
 
@@ -56,7 +52,6 @@ Execute os cenários com baixo volume de interações, pois o ambiente é compar
   1. Adicione 1 Camiseta Essencial e 1 Calça Jeans Slim.
   2. Observe subtotal, frete, valor faltante e total.
 - Resultado esperado: subtotal R$ 199,80, frete R$ 19,90, faltante R$ 0,20 e total R$ 219,70.
-- Evidência: `CT-FRETE-03.png`.
 
 ### CT-FRETE-05 — Frete grátis com jaqueta e cupom válido
 
@@ -67,7 +62,6 @@ Execute os cenários com baixo volume de interações, pois o ambiente é compar
   2. Aplique `BEMVINDO10`.
   3. Observe desconto, frete e total.
 - Resultado esperado: desconto R$ 22,99, frete R$ 0,00 e total R$ 206,91.
-- Evidência: `CT-FRETE-05.png`.
 
 ### CT-FRETE-06 — Valor faltante para frete grátis na compra com mochila
 
@@ -77,7 +71,6 @@ Execute os cenários com baixo volume de interações, pois o ambiente é compar
   1. Adicione 1 Mochila Urbana 20L.
   2. Observe o valor faltante exibido.
 - Resultado esperado: valor numérico faltante de R$ 100,00; texto exibido: a confirmar na execução.
-- Evidência: `CT-FRETE-06.png`.
 
 ## Cálculo do carrinho
 
@@ -90,7 +83,6 @@ Execute os cenários com baixo volume de interações, pois o ambiente é compar
   2. Esvazie o carrinho; adicione 2 Mochilas Urbanas 20L; confira subtotal R$ 200,00, frete R$ 0,00 e total R$ 200,00.
   3. Esvazie o carrinho; adicione 1 Tênis Casual Urbano; confira subtotal R$ 189,90, frete R$ 19,90 e total R$ 209,80.
 - Resultado esperado: os valores de cada exemplo correspondem aos valores indicados nos passos.
-- Evidência: `CT-CALCULO-01-1.png`, `CT-CALCULO-01-2.png` e `CT-CALCULO-01-3.png`.
 
 ### CT-CALCULO-02 — Validar cálculos com cupom BEMVINDO10
 
@@ -101,7 +93,6 @@ Execute os cenários com baixo volume de interações, pois o ambiente é compar
   2. Esvazie o carrinho; adicione 1 Calça Jeans Slim e 2 Bonés Aba Curva; aplique `BEMVINDO10`; confira subtotal R$ 239,70, desconto R$ 23,97, frete R$ 0,00 e total R$ 215,73.
   3. Esvazie o carrinho; adicione 1 Camiseta Essencial e 1 Calça Jeans Slim; aplique `BEMVINDO10`; confira subtotal R$ 199,80, desconto R$ 19,98, frete R$ 19,90 e total R$ 199,72.
 - Resultado esperado: os valores de cada exemplo correspondem aos valores indicados nos passos.
-- Evidência: `CT-CALCULO-02-1.png`, `CT-CALCULO-02-2.png` e `CT-CALCULO-02-3.png`.
 
 ### CT-CALCULO-03 — Validar arredondamento para duas casas decimais
 
@@ -112,7 +103,6 @@ Execute os cenários com baixo volume de interações, pois o ambiente é compar
   2. Esvazie o carrinho; adicione 3 Kits de Meias, aplique `BEMVINDO10` e confira subtotal R$ 89,70, desconto R$ 8,97, frete R$ 19,90 e total R$ 100,63.
   3. Em cada exemplo, observe se algum valor exibe mais de duas casas decimais.
 - Resultado esperado: valores correspondentes aos exemplos e nenhum valor com mais de duas casas decimais.
-- Evidência: `CT-CALCULO-03-1.png` e `CT-CALCULO-03-2.png`.
 
 ## Validação do cliente pela API
 
@@ -155,7 +145,6 @@ curl -i -X POST "$BASE_URL/api/pedidos" \
 
 - Para a segunda chamada, use o mesmo comando com `"cep":"01310100"`.
 - Resultado esperado: status 201 nas duas chamadas; registrar o formato do CEP retornado, sem pressupor normalização.
-- Evidência: `CT-CLIENTE-04-1.txt` e `CT-CLIENTE-04-2.txt`.
 
 ## Fluxo da interface
 
@@ -167,7 +156,6 @@ curl -i -X POST "$BASE_URL/api/pedidos" \
   1. Acesse a página inicial.
   2. Conte os produtos e confira categoria, nome, descrição, preço e botão “Adicionar ao carrinho”.
 - Resultado esperado: 8 produtos, cada um com os dados e botão indicados.
-- Evidência: `CT-INTERFACE-01.png`.
 
 ### CT-INTERFACE-02 — Carrinho vazio informa que ele está vazio
 
@@ -177,7 +165,6 @@ curl -i -X POST "$BASE_URL/api/pedidos" \
   1. Acesse o carrinho sem adicionar produtos.
   2. Confira os textos e a ação previstos no cenário.
 - Resultado esperado: “Seu carrinho está vazio”, “Escolha um produto na vitrine para começar.” e botão “Ver produtos”.
-- Evidência: `CT-INTERFACE-02.png`.
 
 ### CT-INTERFACE-03 — Remover um item do carrinho recalcula o total
 
@@ -187,7 +174,6 @@ curl -i -X POST "$BASE_URL/api/pedidos" \
   1. Remova o item do carrinho.
   2. Observe subtotal, frete e total.
 - Resultado esperado: subtotal, frete e total recalculados; valores específicos não definidos neste cenário.
-- Evidência: `CT-INTERFACE-03.png`.
 
 ### CT-INTERFACE-04 — Outra aba ou janela anônima inicia com carrinho vazio
 
@@ -197,7 +183,6 @@ curl -i -X POST "$BASE_URL/api/pedidos" \
   1. Abra outra aba ou uma janela anônima.
   2. Acesse a loja e consulte o carrinho.
 - Resultado esperado: carrinho vazio; comportamento esperado do ambiente, não é bug.
-- Evidência: `CT-INTERFACE-04.png`.
 
 ### CT-INTERFACE-05 — Concluir o pedido pela interface com dados válidos
 
@@ -209,4 +194,3 @@ curl -i -X POST "$BASE_URL/api/pedidos" \
 - Missão exploratória: mapear o fluxo até a confirmação com dados válidos.
 - O que registrar: duração, observações do fluxo, textos apresentados e eventuais pontos que precisem de confirmação.
 - Resultado esperado: nenhum resultado fixo; confirmar comportamento durante a exploração.
-- Evidência: `CT-INTERFACE-05-1.png`, `CT-INTERFACE-05-2.png` e demais capturas necessárias.
