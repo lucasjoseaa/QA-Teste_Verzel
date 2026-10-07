@@ -14,9 +14,11 @@
 | Passou no Playwright | 44 |
 | Falhas conhecidas marcadas como esperadas (`test.fail`) | 10 (8 API; 2 interface) |
 | Falhas inesperadas | 0 |
-| Não executado (cenários manuais e exploratórios) | 16 |
+| Cenários manuais e exploratórios executados | 16 |
+| Cenários manuais e exploratórios que passaram | 15 |
+| Cenários manuais e exploratórios que falharam | 1 |
 
-As suítes foram executadas novamente após os testes correspondentes aos defeitos receberem `test.fail`. O Playwright reportou todos os 44 casos automatizados como aprovados, incluindo 10 falhas esperadas e identificadas (8 de API e 2 de interface); não houve falhas inesperadas. As linhas dos cenários abaixo continuam registrando o comportamento observado como “Falhou”. Os 16 cenários manuais e exploratórios não foram executados nem preenchidos neste relatório. As linhas de exemplos expandidas explicam a diferença entre as 48 definições da matriz e os 60 registros de resultado.
+As suítes foram executadas novamente após os testes correspondentes aos defeitos receberem `test.fail`. O Playwright reportou todos os 44 casos automatizados como aprovados, incluindo 10 falhas esperadas e identificadas (8 de API e 2 de interface); não houve falhas inesperadas. As linhas dos cenários automatizados abaixo continuam registrando o comportamento observado como “Falhou”. Conforme informado pelo responsável, os 16 cenários manuais e exploratórios foram executados em 06/10/2026: 15 passaram e CT-INTERFACE-05 falhou. As linhas de exemplos expandidas explicam a diferença entre as 48 definições da matriz e os 60 registros de resultado.
 
 | Camada | Casos executados | Reportados como aprovados pelo Playwright | Falhas esperadas (`test.fail`) | Falhas inesperadas |
 |---|---:|---:|---:|---:|
@@ -34,10 +36,10 @@ Os relatórios JSON e as saídas completas de texto foram gerados em arquivos te
 |---|---|---|---|---|---|---|
 | CT-CUPOM-01 | Aplicar o cupom válido BEMVINDO10 | Interface | Automatizado | Passou | — | — |
 | CT-CUPOM-02 | Aceitar variações de caixa e espaços no código do cupom | Interface | Automatizado | Passou (4 de 4 exemplos) | — | — |
-| CT-CUPOM-03 | Exibir mensagem para cupom inexistente | Interface | Manual | Não executado | — | Preencher após execução manual. |
-| CT-CUPOM-04 | Exibir mensagem para cupom expirado | Interface | Manual | Não executado | — | Preencher após execução manual. |
-| CT-CUPOM-05 | Aplicar um segundo cupom sem remover o primeiro | Interface | Exploratório | Não executado | — | Preencher após sessão exploratória. |
-| CT-CUPOM-06 | Aplicar cupom em compra abaixo do valor de frete grátis | Interface | Manual | Não executado | — | Preencher após execução manual. |
+| CT-CUPOM-03 | Exibir mensagem para cupom inexistente | Interface | Manual | Passou | — | Execução manual informada pelo responsável em 06/10/2026. |
+| CT-CUPOM-04 | Exibir mensagem para cupom expirado | Interface | Manual | Passou | — | Execução manual informada pelo responsável em 06/10/2026. |
+| CT-CUPOM-05 | Aplicar um segundo cupom sem remover o primeiro | Interface | Exploratório | Passou | — | Execução exploratória informada pelo responsável em 06/10/2026. |
+| CT-CUPOM-06 | Aplicar cupom em compra abaixo do valor de frete grátis | Interface | Manual | Passou | — | Execução manual informada pelo responsável em 06/10/2026. |
 
 ### 2.2 Frete grátis
 
@@ -45,10 +47,10 @@ Os relatórios JSON e as saídas completas de texto foram gerados em arquivos te
 |---|---|---|---|---|---|---|
 | CT-FRETE-01 | Frete cobrado abaixo do subtotal mínimo | Interface | Automatizado | Passou | — | — |
 | CT-FRETE-02 | Frete grátis com subtotal mínimo exato | Interface | Automatizado | Falhou | [Captura](./evidencias/interface/CT-FRETE-02.png) | Esperado: frete R$ 0,00 e total R$ 200,00 (CA06 e matriz); obtido: frete R$ 19,90 e total R$ 219,90. Registrado em [BUG-001](./bugs/BUG-001-frete-gratis-no-limite-de-200.md). |
-| CT-FRETE-03 | Frete cobrado e valor faltante para frete grátis | Interface | Manual | Não executado | — | Preencher após execução manual. |
+| CT-FRETE-03 | Frete cobrado e valor faltante para frete grátis | Interface | Manual | Passou | — | Execução manual informada pelo responsável em 06/10/2026. |
 | CT-FRETE-04 | Frete grátis com cupom válido considerando subtotal antes do desconto | Interface | Automatizado | Falhou | [Captura](./evidencias/interface/CT-FRETE-04.png) | Esperado: desconto R$ 20,00, frete R$ 0,00 e total R$ 180,00 (CA06, CA08 e matriz); obtido: desconto R$ 20,00, frete R$ 19,90 e total R$ 199,90. Registrado em [BUG-001](./bugs/BUG-001-frete-gratis-no-limite-de-200.md). |
-| CT-FRETE-05 | Frete grátis com jaqueta e cupom válido | Interface | Manual | Não executado | — | Preencher após execução manual. |
-| CT-FRETE-06 | Valor faltante para frete grátis na compra com mochila | Interface | Manual | Não executado | — | Preencher após execução manual. |
+| CT-FRETE-05 | Frete grátis com jaqueta e cupom válido | Interface | Manual | Passou | — | Execução manual informada pelo responsável em 06/10/2026. |
+| CT-FRETE-06 | Valor faltante para frete grátis na compra com mochila | Interface | Manual | Passou | — | Execução manual informada pelo responsável em 06/10/2026. |
 
 ### 2.3 Limite de quantidade
 
@@ -64,9 +66,9 @@ Os relatórios JSON e as saídas completas de texto foram gerados em arquivos te
 
 | ID | Título | Camada | Tipo | Resultado | Evidência | Observação |
 |---|---|---|---|---|---|---|
-| CT-CALCULO-01 | Validar cálculos sem cupom | Interface | Manual | Não executado | — | Preencher após execução manual dos três exemplos. |
-| CT-CALCULO-02 | Validar cálculos com cupom BEMVINDO10 | Interface | Manual | Não executado | — | Preencher após execução manual dos três exemplos. |
-| CT-CALCULO-03 | Validar arredondamento para duas casas decimais | Interface | Manual | Não executado | — | Preencher após execução manual dos dois exemplos. |
+| CT-CALCULO-01 | Validar cálculos sem cupom | Interface | Manual | Passou | — | Execução manual informada pelo responsável em 06/10/2026. |
+| CT-CALCULO-02 | Validar cálculos com cupom BEMVINDO10 | Interface | Manual | Passou | — | Execução manual informada pelo responsável em 06/10/2026. |
+| CT-CALCULO-03 | Validar arredondamento para duas casas decimais | Interface | Manual | Passou | — | Execução manual informada pelo responsável em 06/10/2026. |
 
 ### 2.5 API de cálculo do carrinho
 
@@ -96,7 +98,7 @@ Os relatórios JSON e as saídas completas de texto foram gerados em arquivos te
 | CT-CLIENTE-01 | Nome sem sobrenome é rejeitado | API | Automatizado | Passou | — | — |
 | CT-CLIENTE-02 | E-mails inválidos são rejeitados | API | Automatizado | Passou (3 de 3 exemplos) | — | — |
 | CT-CLIENTE-03 | CEP inválido é rejeitado | API | Automatizado | Passou (3 de 3 exemplos) | — | — |
-| CT-CLIENTE-04 | CEP com hífen e sem hífen são aceitos | API | Manual | Não executado | — | Preencher após execução manual. |
+| CT-CLIENTE-04 | CEP com hífen e sem hífen são aceitos | API | Manual | Passou | — | Execução manual informada pelo responsável em 06/10/2026. |
 | CT-CLIENTE-05 | Recusar nome com número ou símbolo — `lucas1 jose2` | API | Automatizado | Falhou | [Evidência](./evidencias/api/CT-CLIENTE-05-lucas1-jose2-resposta.json) | Esperado: HTTP 422 e `DADOS_INVALIDOS`; obtido: HTTP 201. Requisito implícito e sujeito a revisão; registrado em [BUG-003](./bugs/BUG-003-nome-aceita-numeros-e-simbolos.md). |
 | CT-CLIENTE-05 | Recusar nome com número ou símbolo — `lucas@ jose#` | API | Automatizado | Falhou | [Evidência](./evidencias/api/CT-CLIENTE-05-lucas-jose-resposta.json) | Esperado: HTTP 422 e `DADOS_INVALIDOS`; obtido: HTTP 201. Requisito implícito e sujeito a revisão; registrado em [BUG-003](./bugs/BUG-003-nome-aceita-numeros-e-simbolos.md). |
 | CT-CLIENTE-05 | Recusar nome com número ou símbolo — `lucas1 jose@` | API | Automatizado | Falhou | [Evidência](./evidencias/api/CT-CLIENTE-05-lucas1-jose-resposta.json) | Esperado: HTTP 422 e `DADOS_INVALIDOS`; obtido: HTTP 201. Requisito implícito e sujeito a revisão; registrado em [BUG-003](./bugs/BUG-003-nome-aceita-numeros-e-simbolos.md). |
@@ -117,11 +119,11 @@ Os relatórios JSON e as saídas completas de texto foram gerados em arquivos te
 
 | ID | Título | Camada | Tipo | Resultado | Evidência | Observação |
 |---|---|---|---|---|---|---|
-| CT-INTERFACE-01 | Página inicial exibe os produtos da vitrine | Interface | Manual | Não executado | — | Preencher após execução manual. |
-| CT-INTERFACE-02 | Carrinho vazio informa que ele está vazio | Interface | Manual | Não executado | — | Preencher após execução manual. |
-| CT-INTERFACE-03 | Remover um item do carrinho recalcula o total | Interface | Manual | Não executado | — | Preencher após execução manual. |
-| CT-INTERFACE-04 | Outra aba ou janela anônima inicia com carrinho vazio | Interface | Manual | Não executado | — | Preencher após execução manual. |
-| CT-INTERFACE-05 | Concluir o pedido pela interface com dados válidos | Interface | Exploratório | Não executado | — | Preencher após sessão exploratória. |
+| CT-INTERFACE-01 | Página inicial exibe os produtos da vitrine | Interface | Manual | Passou | — | Execução manual informada pelo responsável em 06/10/2026. |
+| CT-INTERFACE-02 | Carrinho vazio informa que ele está vazio | Interface | Manual | Passou | — | Execução manual informada pelo responsável em 06/10/2026. |
+| CT-INTERFACE-03 | Remover um item do carrinho recalcula o total | Interface | Manual | Passou | — | Execução manual informada pelo responsável em 06/10/2026. |
+| CT-INTERFACE-04 | Outra aba ou janela anônima inicia com carrinho vazio | Interface | Manual | Passou | — | Execução manual informada pelo responsável em 06/10/2026. |
+| CT-INTERFACE-05 | Concluir o pedido pela interface com dados válidos | Interface | Exploratório | Falhou | — | Falha informada pelo responsável em 06/10/2026; detalhes da execução não fornecidos. |
 
 ## 3. Falhas observadas
 
@@ -142,26 +144,26 @@ Os valores esperados abaixo vêm dos critérios e resultados registrados na docu
 
 ## 4. Execução manual e exploratória
 
-Os campos abaixo permanecem em branco para preenchimento pelo responsável após executar os cenários.
+Conforme informado pelo responsável, todos os cenários manuais e exploratórios foram executados em 06/10/2026. Todos passaram, exceto CT-INTERFACE-05, que falhou.
 
-| ID | Data | Resultado obtido | Status | Evidência |
-|---|---|---|---|---|
-| CT-CUPOM-03 |  |  |  |  |
-| CT-CUPOM-04 |  |  |  |  |
-| CT-CUPOM-05 |  |  |  |  |
-| CT-CUPOM-06 |  |  |  |  |
-| CT-FRETE-03 |  |  |  |  |
-| CT-FRETE-05 |  |  |  |  |
-| CT-FRETE-06 |  |  |  |  |
-| CT-CALCULO-01 |  |  |  |  |
-| CT-CALCULO-02 |  |  |  |  |
-| CT-CALCULO-03 |  |  |  |  |
-| CT-CLIENTE-04 |  |  |  |  |
-| CT-INTERFACE-01 |  |  |  |  |
-| CT-INTERFACE-02 |  |  |  |  |
-| CT-INTERFACE-03 |  |  |  |  |
-| CT-INTERFACE-04 |  |  |  |  |
-| CT-INTERFACE-05 |  |  |  |  |
+| ID | Data | Status |
+|---|---|---|
+| CT-CUPOM-03 | 06/10/2026 | Passou |
+| CT-CUPOM-04 | 06/10/2026 | Passou |
+| CT-CUPOM-05 | 06/10/2026 | Passou |
+| CT-CUPOM-06 | 06/10/2026 | Passou |
+| CT-FRETE-03 | 06/10/2026 | Passou |
+| CT-FRETE-05 | 06/10/2026 | Passou |
+| CT-FRETE-06 | 06/10/2026 | Passou |
+| CT-CALCULO-01 | 06/10/2026 | Passou |
+| CT-CALCULO-02 | 06/10/2026 | Passou |
+| CT-CALCULO-03 | 06/10/2026 | Passou |
+| CT-CLIENTE-04 | 06/10/2026 | Passou |
+| CT-INTERFACE-01 | 06/10/2026 | Passou |
+| CT-INTERFACE-02 | 06/10/2026 | Passou |
+| CT-INTERFACE-03 | 06/10/2026 | Passou |
+| CT-INTERFACE-04 | 06/10/2026 | Passou |
+| CT-INTERFACE-05 | 06/10/2026 | Falhou |
 
 ## 5. Observações
 
@@ -175,13 +177,6 @@ Os campos abaixo permanecem em branco para preenchimento pelo responsável após
 | CT-CLIENTE-05 — `lucas@ jose#` | `lucas@ jose#` | `lucas@exemplo.com` | Falhou; HTTP 201 | [JSON](./evidencias/api/CT-CLIENTE-05-lucas-jose-resposta.json) |
 | CT-CLIENTE-05 — `lucas1 jose@` | `lucas1 jose@` | `lucas@exemplo.com` | Falhou; HTTP 201 | [JSON](./evidencias/api/CT-CLIENTE-05-lucas1-jose-resposta.json) |
 | CT-CLIENTE-06 | `Lucas José` | `usuario@!#%.com` | Falhou; HTTP 201 | [JSON](./evidencias/api/CT-CLIENTE-06-email-invalido-resposta.json) |
-
-- Em 06/10/2026 às 20:26:13 (UTC−03:00), foi reexecutado isoladamente o exemplo CT-QUANTIDADE-04 de `/api/pedidos` para atualizar os dados do cliente da evidência. O teste falhou novamente: esperava HTTP 422 e recebeu HTTP 201. O único JSON do cenário foi substituído pela captura real dessa execução; agora registra o nome `Lucas José` e o e-mail `lucas@exemplo.com`.
-- Em 06/10/2026 às 20:36:30 (UTC−03:00), a suíte API executou 34 casos: o Playwright reportou 34 aprovados e 8 falhas esperadas marcadas com `test.fail`; não houve falhas inesperadas.
-- Em 06/10/2026 às 20:36:47 (UTC−03:00), a suíte de interface executou 10 casos: o Playwright reportou 10 aprovados e 2 falhas esperadas marcadas com `test.fail`; não houve falhas inesperadas.
-- Os cenários manuais e exploratórios permanecem sem execução e sem evidência nesta etapa.
-- A tela de fechamento do pedido não foi exercitada nesta etapa.
-- A observação de aceitação dos dados de nome e e-mail na interface foi informada na solicitação da Etapa 6, mas não há data/hora nem captura manual no repositório; por isso, ela permanece identificada como relato informado nos relatórios, não como evidência anexada.
 
 ## 6. Defeitos registrados
 
