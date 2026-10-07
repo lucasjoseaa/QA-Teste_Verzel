@@ -107,12 +107,7 @@ HTTP 201:
 ## 10. Evidências
 
 - [CT-CLIENTE-06-email-invalido-resposta.json](../evidencias/api/CT-CLIENTE-06-email-invalido-resposta.json) — requisição e resposta real da API.
-- ![BUG-004: captura manual do e-mail inválido, ainda não anexada](../evidencias/manual/BUG-004-email-invalido.png)
-
-### Evidências a anexar
-
-- [x] `docs/evidencias/api/CT-CLIENTE-06-email-invalido-resposta.json`
-- [ ] `docs/evidencias/manual/BUG-004-email-invalido.png`
+- ![BUG-004: captura manual do e-mail inválido](../evidencias/manual/BUG-004-email-invalido.png)
 
 ## 11. Impacto
 
@@ -128,3 +123,4 @@ Um pedido pode ser criado com um endereço de e-mail que a documentação caract
 - A documentação exige e-mail em formato válido, mas não especifica formalmente a gramática completa de endereços. O exemplo testado contém caracteres especiais no domínio.
 - A informação sobre a interface foi fornecida na solicitação desta Etapa; não há arquivo de execução, horário ou captura no repositório que permita verificá-la independentemente.
 - O campo de navegador da execução manual precisa ser preenchido pelo responsável.
+- A captura manual do e-mail inválido está anexada.
