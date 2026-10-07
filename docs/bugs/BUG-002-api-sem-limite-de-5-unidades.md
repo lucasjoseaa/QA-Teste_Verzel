@@ -133,13 +133,7 @@ CT-QUANTIDADE-02 passou: o botão de adicionar ficou desabilitado, a interface e
 
 - [CT-QUANTIDADE-04-api-carrinho-calcular-resposta.json](../evidencias/api/CT-QUANTIDADE-04-api-carrinho-calcular-resposta.json) — corpo e resposta do cálculo com seis unidades.
 - [CT-QUANTIDADE-04-api-pedidos-resposta.json](../evidencias/api/CT-QUANTIDADE-04-api-pedidos-resposta.json) — corpo e resposta do pedido confirmado com seis unidades.
-- ![BUG-002: captura manual do bloqueio de quantidade na interface, ainda não anexada](../evidencias/manual/BUG-002-interface-limite.png)
-
-### Evidências a anexar
-
-- [x] `docs/evidencias/api/CT-QUANTIDADE-04-api-carrinho-calcular-resposta.json`
-- [x] `docs/evidencias/api/CT-QUANTIDADE-04-api-pedidos-resposta.json`
-- [ ] `docs/evidencias/manual/BUG-002-interface-limite.png`
+- ![BUG-002: captura manual do bloqueio de quantidade na interface](../evidencias/manual/BUG-002-interface-limite.png)
 
 ## 11. Impacto
 
@@ -153,4 +147,4 @@ Uma chamada direta à API pode calcular ou confirmar um pedido acima do limite d
 
 - A interface passou CT-QUANTIDADE-02 e constitui contraste com o comportamento da API.
 - Os pedidos são fictícios e não são armazenados, conforme os comportamentos esperados do ambiente.
-- A captura manual prevista para o contraste ainda não foi anexada.
+- A captura manual do bloqueio de quantidade na interface está anexada.
