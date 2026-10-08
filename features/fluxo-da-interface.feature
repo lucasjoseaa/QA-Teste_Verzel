@@ -37,3 +37,11 @@ Funcionalidade: Fluxo da interface
     Quando concluo o pedido pela interface
     Então o resultado deve ser registrado como "A confirmar na execução"
     E a tela de fechamento do pedido deve ser mapeada antes da automação
+
+  @CT-INTERFACE-06 @interface @exploratorio
+  Cenário: Verificar a navegação na versão mobile
+    Dado que acesso a loja em um dispositivo mobile simulado pelas ferramentas de desenvolvedor
+    Quando procuro no cabeçalho um menu de navegação lateral ou um ícone de menu
+    Então registro se existe algum menu de navegação na versão mobile
+    E registro quais itens de navegação ficam visíveis
+    E confirmo que o carrinho e a vitrine de produtos continuam acessíveis pela página inicial

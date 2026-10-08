@@ -9,7 +9,7 @@
 | Execução da interface (Etapa 6) | 20:36:47 (UTC−03:00) |
 | Node.js | v24.21.0 |
 | Playwright | 1.63.0 |
-| Cenários definidos na matriz | 50 |
+| Cenários definidos na matriz | 51 |
 | Casos automatizados executados, com exemplos expandidos | 50 |
 | Passou no Playwright | 50 |
 | Falhas conhecidas marcadas como esperadas (`test.fail`) | 16 (14 API; 2 interface) |
@@ -18,7 +18,7 @@
 | Cenários manuais e exploratórios que passaram | 15 |
 | Cenários manuais e exploratórios que falharam | 1 |
 
-Após os testes correspondentes aos defeitos receberem `test.fail`, o Playwright reportou os 50 casos automatizados como aprovados, incluindo 16 falhas esperadas e identificadas (14 de API e 2 de interface); não houve falhas inesperadas. As linhas dos cenários automatizados abaixo registram o comportamento observado como “Falhou” quando houve divergência. Na primeira execução do complemento, antes de adicionar `test.fail` aos seis novos casos, os 34 testes preexistentes passaram e os seis casos novos falharam conforme as respostas observadas. Os 16 cenários manuais e exploratórios foram executados em 06/10/2026: 15 passaram e CT-INTERFACE-05 falhou. As linhas de exemplos expandidas explicam a diferença entre as 50 definições da matriz e os 66 registros de resultado.
+Após os testes correspondentes aos defeitos receberem `test.fail`, o Playwright reportou os 50 casos automatizados como aprovados, incluindo 16 falhas esperadas e identificadas (14 de API e 2 de interface); não houve falhas inesperadas. As linhas dos cenários automatizados abaixo registram o comportamento observado como “Falhou” quando houve divergência. Na primeira execução do complemento, antes de adicionar `test.fail` aos seis novos casos, os 34 testes preexistentes passaram e os seis casos novos falharam conforme as respostas observadas. Dos 16 cenários manuais e exploratórios com status informado, 15 passaram e CT-INTERFACE-05 falhou; o status de CT-INTERFACE-06 permanece a preencher. As linhas de exemplos expandidas explicam a diferença entre as 51 definições da matriz e os 67 registros de cenários automatizados, manuais e exploratórios.
 
 | Camada | Casos executados | Reportados como aprovados pelo Playwright | Falhas esperadas (`test.fail`) | Falhas inesperadas |
 |---|---:|---:|---:|---:|
@@ -130,6 +130,7 @@ Os relatórios JSON e as saídas completas de texto foram gerados em arquivos te
 | CT-INTERFACE-03 | Remover um item do carrinho recalcula o total | Interface | Manual | Passou | — | Execução manual informada pelo responsável em 06/10/2026. |
 | CT-INTERFACE-04 | Outra aba ou janela anônima inicia com carrinho vazio | Interface | Manual | Passou | — | Execução manual informada pelo responsável em 06/10/2026. |
 | CT-INTERFACE-05 | Concluir o pedido pela interface com dados válidos | Interface | Exploratório | Falhou | — | Falha informada pelo responsável em 06/10/2026; detalhes da execução não fornecidos. |
+| CT-INTERFACE-06 | Verificar a navegação na versão mobile | Interface | Exploratório | [preencher: Executado] | [CT-INTERFACE-06-versao-mobile.png](./evidencias/manual/CT-INTERFACE-06-versao-mobile.png) | Observação exploratória; não é tratada como defeito. Detalhes de execução abaixo. |
 
 ## 3. Falhas observadas
 
@@ -150,7 +151,7 @@ Os valores esperados abaixo vêm dos critérios e resultados registrados na docu
 
 ## 4. Execução manual e exploratória
 
-Conforme informado pelo responsável, todos os cenários manuais e exploratórios foram executados em 06/10/2026. Todos passaram, exceto CT-INTERFACE-05, que falhou.
+Dos 16 cenários manuais e exploratórios com execução registrada em 06/10/2026, 15 passaram e CT-INTERFACE-05 falhou. O registro de CT-INTERFACE-06 foi incluído, mas seus campos de execução permanecem pendentes de preenchimento.
 
 | ID | Data | Status |
 |---|---|---|
@@ -170,6 +171,17 @@ Conforme informado pelo responsável, todos os cenários manuais e exploratório
 | CT-INTERFACE-03 | 06/10/2026 | Passou |
 | CT-INTERFACE-04 | 06/10/2026 | Passou |
 | CT-INTERFACE-05 | 06/10/2026 | Falhou |
+| CT-INTERFACE-06 | — | [preencher: Executado] |
+
+### CT-INTERFACE-06 — Verificar a navegação na versão mobile
+
+- Status: [preencher: Executado]
+- Navegador e dispositivo simulado: [preencher]
+- Existe menu de navegação (lateral ou ícone) na versão mobile: [preencher: Sim/Não]
+- Itens de navegação visíveis: [preencher]
+- Largura em que os itens "Produtos" e "Documentação" deixam de aparecer: [preencher, em px, se aplicável]
+- Observação: Na versão mobile, a barra do topo exibe apenas o logotipo e o carrinho. Os itens "Produtos" e "Documentação" não são exibidos e não há ícone de menu. O layout não prevê menu lateral em nenhuma versão. A documentação não define o comportamento na versão mobile, e a vitrine e o link da documentação permanecem acessíveis pela página inicial. Não é tratado como defeito.
+- Evidência: [CT-INTERFACE-06-versao-mobile.png](./evidencias/manual/CT-INTERFACE-06-versao-mobile.png) (arquivo a ser adicionado).
 
 ## 5. Observações
 

@@ -14,8 +14,8 @@ Legenda: CT = caso de teste, CAnn = critério de aceite, BUG-NNN = defeito.
 | API de pedidos | 4 |
 | Validação do cliente | 6 |
 | API de produtos e rotas | 6 |
-| Fluxo da interface | 5 |
-| Total | 50 |
+| Fluxo da interface | 6 |
+| Total | 51 |
 
 ## 2. Resumo por tipo
 
@@ -23,8 +23,8 @@ Legenda: CT = caso de teste, CAnn = critério de aceite, BUG-NNN = defeito.
 | --- | ---: |
 | Automatizado | 34 |
 | Manual | 14 |
-| Exploratório | 2 |
-| Total | 50 |
+| Exploratório | 3 |
+| Total | 51 |
 
 ## 3. Cobertura dos critérios de aceite
 
@@ -42,6 +42,7 @@ Legenda: CT = caso de teste, CAnn = critério de aceite, BUG-NNN = defeito.
 | CA10 | CT-QUANTIDADE-01, CT-QUANTIDADE-02, CT-QUANTIDADE-03, CT-QUANTIDADE-04, CT-QUANTIDADE-05, CT-API-CARRINHO-05, CT-API-CARRINHO-06, CT-API-CARRINHO-07 |
 | CA11 | CT-CALCULO-01, CT-CALCULO-02, CT-CALCULO-03, CT-API-CARRINHO-01, CT-API-CARRINHO-02, CT-CLIENTE-01, CT-CLIENTE-02, CT-CLIENTE-03, CT-CLIENTE-04, CT-CLIENTE-05, CT-CLIENTE-06 |
 | Requisito implícito de qualidade da mensagem | CT-API-CARRINHO-09, CT-API-PEDIDOS-04 |
+| Não se aplica (cenário exploratório sem critério de aceite) | CT-INTERFACE-06 |
 
 ## 4. Cupom de desconto
 
@@ -137,3 +138,4 @@ Legenda: CT = caso de teste, CAnn = critério de aceite, BUG-NNN = defeito.
 | CT-INTERFACE-03 | - | Remover um item do carrinho recalcula o total. | Carrinho com item válido. | Remoção do item. | Subtotal, frete e total recalculados. | Interface | Manual | Média |
 | CT-INTERFACE-04 | - | Outra aba ou janela anônima inicia com carrinho vazio. | Loja acessível. | Outra aba ou janela anônima. | Carrinho vazio; comportamento esperado do ambiente. | Interface | Manual | Baixa |
 | CT-INTERFACE-05 | - | Concluir o pedido pela interface com dados válidos. | Carrinho com itens válidos. | Fluxo completo da interface. | Resultado a confirmar na execução; tela de fechamento ainda não mapeada. | Interface | Exploratório | Alta |
+| CT-INTERFACE-06 | Não se aplica | Verificar a navegação na versão mobile. | Loja acessível no navegador, com a simulação de dispositivo mobile disponível (por exemplo, pelas ferramentas de desenvolvedor). | Versão mobile simulada pelas ferramentas de desenvolvedor, em retrato e em paisagem. | A confirmar na execução. A documentação não define o comportamento mobile nem prevê menu lateral. Registrar se existe menu de navegação e quais itens ficam visíveis. | Interface | Exploratório | Baixa |

@@ -152,7 +152,7 @@ Cada cenário tem o mesmo identificador e o mesmo título na matriz, no arquivo 
 
 ## Cobertura
 
-São **50 cenários**, distribuídos por área e por tipo de execução:
+São **51 cenários**, distribuídos por área e por tipo de execução:
 
 | Área | Cenários | Automatizado | Manual | Exploratório |
 |---|---|---|---|---|
@@ -164,8 +164,8 @@ São **50 cenários**, distribuídos por área e por tipo de execução:
 | API: pedidos | 4 | 4 | 0 | 0 |
 | Dados do cliente | 6 | 5 | 1 | 0 |
 | API: produtos, rotas e erros gerais | 6 | 6 | 0 | 0 |
-| Fluxo da interface | 5 | 0 | 4 | 1 |
-| **Total** | **50** | **34** | **14** | **2** |
+| Fluxo da interface | 6 | 0 | 4 | 2 |
+| **Total** | **51** | **34** | **14** | **3** |
 
 Os cenários automatizados são executados com Playwright e, onde há exemplos (Esquema do Cenário), cada linha de exemplo gera um teste. A tabela de cobertura de cada critério de aceite está no final da matriz de cenários.
 
