@@ -68,15 +68,24 @@ Os seis casos responderam HTTP 422 com o código `PRODUTO_NAO_ENCONTRADO`. As me
 
 No comportamento informado para comparação, um elemento de `itens` que não é um objeto retorna `ITEM_INVALIDO` com a mensagem `Cada item deve ser um objeto com produtoId e quantidade.`. Quantidade ausente ou nula retorna `QUANTIDADE_INVALIDA` com uma mensagem clara e o campo indicado. Esses casos contrastam com a interpolação do valor interno de `produtoId` observada neste defeito.
 
-## 10. Impacto
+## 10. Evidências
+
+- [CT-API-CARRINHO-09 — produtoId ausente](../evidencias/api/CT-API-CARRINHO-09-sem-produtoid-resposta.json)
+- [CT-API-CARRINHO-09 — produtoId nulo](../evidencias/api/CT-API-CARRINHO-09-produtoid-nulo-resposta.json)
+- [CT-API-CARRINHO-09 — produtoId vazio](../evidencias/api/CT-API-CARRINHO-09-produtoid-vazio-resposta.json)
+- [CT-API-PEDIDOS-04 — produtoId ausente](../evidencias/api/CT-API-PEDIDOS-04-sem-produtoid-resposta.json)
+- [CT-API-PEDIDOS-04 — produtoId nulo](../evidencias/api/CT-API-PEDIDOS-04-produtoid-nulo-resposta.json)
+- [CT-API-PEDIDOS-04 — produtoId vazio](../evidencias/api/CT-API-PEDIDOS-04-produtoid-vazio-resposta.json)
+
+## 11. Impacto
 
 A mensagem pode confundir quem consome a API e expõe valores internos (`undefined`, `null` ou campo vazio) na resposta de erro.
 
-## 11. Hipótese de causa
+## 12. Hipótese de causa
 
 **Hipótese:** a validação procura o produto e monta a mensagem antes de verificar se `produtoId` está presente e contém um valor utilizável. Esta hipótese não foi confirmada por inspeção da implementação da API.
 
-## 12. Observações
+## 13. Observações
 
 - Para item sem `produtoId`, a definição documentada de `ITEM_INVALIDO` — “Um item não é um objeto com produtoId e quantidade.” — parece aplicável, enquanto `PRODUTO_NAO_ENCONTRADO` — “Um item referencia um produto inexistente.” — descreve outro caso. O retorno de `PRODUTO_NAO_ENCONTRADO` para esse exemplo pode ser uma divergência com a documentação.
 - Para `produtoId` vazio, `PRODUTO_NAO_ENCONTRADO` é aceitável: o identificador vazio não referencia um produto existente. A mensagem, porém, continua expondo uma interpolação vazia.
