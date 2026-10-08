@@ -23,3 +23,9 @@ Funcionalidade: API de pedidos
     Quando envio uma requisição POST para "/api/pedidos" com o item "P005" em quantidade 1 e cupom "VERAO2026"
     Então a resposta tem status 422
     E o campo "erro.codigo" é "CUPOM_EXPIRADO"
+
+  @CT-API-PEDIDOS-04 @api @automatizado
+  Cenário: A mensagem de erro não expõe produtoId ausente ou inválido
+    Quando envio uma requisição POST para "/api/pedidos" com cliente válido e produtoId <estado>
+    Então a resposta tem status 422
+    E a mensagem de erro não contém valores internos do código

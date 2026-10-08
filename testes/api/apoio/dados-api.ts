@@ -1,4 +1,4 @@
-import { expect } from '@playwright/test';
+import { expect, type APIResponse, type TestInfo } from '@playwright/test';
 
 export const produtos = {
   P001: { nome: 'Camiseta Essencial', precoCentavos: 5990 },
@@ -19,7 +19,7 @@ export const cupons = {
 type ProdutoId = keyof typeof produtos;
 
 interface ItemCarrinho {
-  produtoId: ProdutoId | string;
+  produtoId?: ProdutoId | string | null;
   quantidade: number;
 }
 
@@ -77,4 +77,29 @@ export function esperarValorMonetario(obtido: unknown, esperadoCentavos: number)
 export function esperarErro(corpo: unknown, codigo: string): void {
   // Ambiguidade nº 5 da análise: não se presume se os detalhes usam "campo" ou "campos".
   expect(obterCampo(corpo, 'erro.codigo')).toBe(codigo);
+}
+
+export async function anexarEvidenciaApi(
+  testInfo: TestInfo,
+  nome: string,
+  endpoint: string,
+  corpoEnviado: unknown,
+  resposta: APIResponse,
+): Promise<unknown> {
+  const respostaRecebida: unknown = await resposta.json();
+  const evidencia = {
+    cenario: nome.replace(/-(?:sem-produtoid|produtoid-nulo|produtoid-vazio)-resposta$/, ''),
+    endpoint,
+    metodo: 'POST',
+    corpoEnviado,
+    status: resposta.status(),
+    respostaRecebida,
+  };
+
+  await testInfo.attach(nome, {
+    body: Buffer.from(JSON.stringify(evidencia, null, 2)),
+    contentType: 'application/json',
+  });
+  console.log(JSON.stringify(evidencia));
+  return respostaRecebida;
 }

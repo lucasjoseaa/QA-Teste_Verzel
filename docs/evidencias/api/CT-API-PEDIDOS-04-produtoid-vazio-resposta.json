@@ -1,0 +1,26 @@
+{
+    "cenario":  "CT-API-PEDIDOS-04",
+    "endpoint":  "/api/pedidos",
+    "metodo":  "POST",
+    "corpoEnviado":  {
+                         "cliente":  {
+                                         "nome":  "Lucas José",
+                                         "email":  "lucas@exemplo.com",
+                                         "cep":  "01310-100"
+                                     },
+                         "itens":  [
+                                       {
+                                           "produtoId":  "",
+                                           "quantidade":  1
+                                       }
+                                   ]
+                     },
+    "status":  422,
+    "respostaRecebida":  {
+                             "erro":  {
+                                          "codigo":  "PRODUTO_NAO_ENCONTRADO",
+                                          "mensagem":  "Produto  não encontrado.",
+                                          "campo":  "itens[0].produtoId"
+                                      }
+                         }
+}

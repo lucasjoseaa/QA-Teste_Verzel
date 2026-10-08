@@ -5,26 +5,26 @@
 | Item | Resultado |
 |---|---|
 | Data | 06/10/2026 |
-| Execução da API (Etapa 6) | 20:36:30 (UTC−03:00) |
+| Execução da API (BUG-005) | 08/10/2026 |
 | Execução da interface (Etapa 6) | 20:36:47 (UTC−03:00) |
 | Node.js | v24.21.0 |
 | Playwright | 1.63.0 |
-| Cenários definidos na matriz | 48 |
-| Casos automatizados executados, com exemplos expandidos | 44 |
-| Passou no Playwright | 44 |
-| Falhas conhecidas marcadas como esperadas (`test.fail`) | 10 (8 API; 2 interface) |
+| Cenários definidos na matriz | 50 |
+| Casos automatizados executados, com exemplos expandidos | 50 |
+| Passou no Playwright | 50 |
+| Falhas conhecidas marcadas como esperadas (`test.fail`) | 16 (14 API; 2 interface) |
 | Falhas inesperadas | 0 |
 | Cenários manuais e exploratórios executados | 16 |
 | Cenários manuais e exploratórios que passaram | 15 |
 | Cenários manuais e exploratórios que falharam | 1 |
 
-As suítes foram executadas novamente após os testes correspondentes aos defeitos receberem `test.fail`. O Playwright reportou todos os 44 casos automatizados como aprovados, incluindo 10 falhas esperadas e identificadas (8 de API e 2 de interface); não houve falhas inesperadas. As linhas dos cenários automatizados abaixo continuam registrando o comportamento observado como “Falhou”. Conforme informado pelo responsável, os 16 cenários manuais e exploratórios foram executados em 06/10/2026: 15 passaram e CT-INTERFACE-05 falhou. As linhas de exemplos expandidas explicam a diferença entre as 48 definições da matriz e os 60 registros de resultado.
+Após os testes correspondentes aos defeitos receberem `test.fail`, o Playwright reportou os 50 casos automatizados como aprovados, incluindo 16 falhas esperadas e identificadas (14 de API e 2 de interface); não houve falhas inesperadas. As linhas dos cenários automatizados abaixo registram o comportamento observado como “Falhou” quando houve divergência. Na primeira execução do complemento, antes de adicionar `test.fail` aos seis novos casos, os 34 testes preexistentes passaram e os seis casos novos falharam conforme as respostas observadas. Os 16 cenários manuais e exploratórios foram executados em 06/10/2026: 15 passaram e CT-INTERFACE-05 falhou. As linhas de exemplos expandidas explicam a diferença entre as 50 definições da matriz e os 66 registros de resultado.
 
 | Camada | Casos executados | Reportados como aprovados pelo Playwright | Falhas esperadas (`test.fail`) | Falhas inesperadas |
 |---|---:|---:|---:|---:|
-| API | 34 | 34 | 8 | 0 |
+| API | 40 | 40 | 14 | 0 |
 | Interface | 10 | 10 | 2 | 0 |
-| Total | 44 | 44 | 10 | 0 |
+| Total | 50 | 50 | 16 | 0 |
 
 Os relatórios JSON e as saídas completas de texto foram gerados em arquivos temporários durante a execução e removidos ao concluir esta etapa. As evidências de falha foram preservadas em [`evidencias/`](./evidencias/).
 
@@ -82,6 +82,9 @@ Os relatórios JSON e as saídas completas de texto foram gerados em arquivos te
 | CT-API-CARRINHO-06 | Produto inexistente é rejeitado na API de cálculo | API | Automatizado | Passou | — | — |
 | CT-API-CARRINHO-07 | Itens duplicados são rejeitados na API de cálculo | API | Automatizado | Passou | — | — |
 | CT-API-CARRINHO-08 | Calcular frete grátis com cupom sobre subtotal de R$ 200,00 | API | Automatizado | Falhou | [Resposta](./evidencias/api/CT-API-CARRINHO-08-resposta.json) | Esperado: status 200, subtotal 200, desconto 20, frete 0 e total 180 (CA06, CA08 e matriz); obtido: status 200, subtotal 200, desconto 20, frete 19.9 e total 199.9. Registrado em [BUG-001](./bugs/BUG-001-frete-gratis-no-limite-de-200.md). |
+| CT-API-CARRINHO-09 — sem `produtoId` | Mensagem sem valores internos | API | Automatizado | Falhou (falha esperada) | [JSON](./evidencias/api/CT-API-CARRINHO-09-sem-produtoid-resposta.json) | HTTP 422; mensagem `Produto undefined não encontrado.`; BUG-005. |
+| CT-API-CARRINHO-09 — `produtoId` nulo | Mensagem sem valores internos | API | Automatizado | Falhou (falha esperada) | [JSON](./evidencias/api/CT-API-CARRINHO-09-produtoid-nulo-resposta.json) | HTTP 422; mensagem `Produto null não encontrado.`; BUG-005. |
+| CT-API-CARRINHO-09 — `produtoId` vazio | Mensagem sem valores internos | API | Automatizado | Falhou (falha esperada) | [JSON](./evidencias/api/CT-API-CARRINHO-09-produtoid-vazio-resposta.json) | HTTP 422; mensagem `Produto  não encontrado.`; BUG-005. |
 
 ### 2.6 API de pedidos
 
@@ -90,6 +93,9 @@ Os relatórios JSON e as saídas completas de texto foram gerados em arquivos te
 | CT-API-PEDIDOS-01 | Confirmar pedido com exemplo da documentação | API | Automatizado | Passou | — | — |
 | CT-API-PEDIDOS-02 | Pedido com cupom inexistente é rejeitado | API | Automatizado | Passou | — | — |
 | CT-API-PEDIDOS-03 | Pedido com cupom expirado é rejeitado | API | Automatizado | Passou | — | — |
+| CT-API-PEDIDOS-04 — sem `produtoId` | Mensagem sem valores internos | API | Automatizado | Falhou (falha esperada) | [JSON](./evidencias/api/CT-API-PEDIDOS-04-sem-produtoid-resposta.json) | HTTP 422; mensagem `Produto undefined não encontrado.`; BUG-005. |
+| CT-API-PEDIDOS-04 — `produtoId` nulo | Mensagem sem valores internos | API | Automatizado | Falhou (falha esperada) | [JSON](./evidencias/api/CT-API-PEDIDOS-04-produtoid-nulo-resposta.json) | HTTP 422; mensagem `Produto null não encontrado.`; BUG-005. |
+| CT-API-PEDIDOS-04 — `produtoId` vazio | Mensagem sem valores internos | API | Automatizado | Falhou (falha esperada) | [JSON](./evidencias/api/CT-API-PEDIDOS-04-produtoid-vazio-resposta.json) | HTTP 422; mensagem `Produto  não encontrado.`; BUG-005. |
 
 ### 2.7 Validação do cliente
 
@@ -186,3 +192,4 @@ Conforme informado pelo responsável, todos os cenários manuais e exploratório
 | [BUG-002](./bugs/BUG-002-api-sem-limite-de-5-unidades.md) | A API não aplica o limite de 5 unidades por produto | Média | Média | API | CT-QUANTIDADE-04; CT-QUANTIDADE-02 como contraste |
 | [BUG-003](./bugs/BUG-003-nome-aceita-numeros-e-simbolos.md) | O campo nome aceita números e símbolos | Baixa | Baixa | Interface e API | CT-CLIENTE-05; CT-INTERFACE-05 (observação manual informada) |
 | [BUG-004](./bugs/BUG-004-email-aceita-caracteres-invalidos.md) | O campo e-mail aceita caracteres inválidos no domínio | Média | Média | Interface e API | CT-CLIENTE-06; CT-CLIENTE-02 como contraste; CT-INTERFACE-05 (observação manual informada) |
+| [BUG-005](./bugs/BUG-005-mensagem-de-erro-com-valores-internos.md) | A mensagem de erro exibe valores internos quando o produtoId é ausente, nulo ou vazio | Baixa | Baixa | API | CT-API-CARRINHO-09, CT-API-PEDIDOS-04 |

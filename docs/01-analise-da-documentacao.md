@@ -98,6 +98,13 @@ Códigos de erro documentados (formato `{ "erro": { "codigo", "mensagem", "campo
 | 405 | `METODO_NAO_PERMITIDO` |
 | 422 | `ITENS_OBRIGATORIOS`, `ITEM_INVALIDO`, `PRODUTO_NAO_ENCONTRADO`, `ITEM_DUPLICADO`, `QUANTIDADE_INVALIDA`, `QUANTIDADE_MAXIMA_EXCEDIDA`, `DADOS_INVALIDOS`, `CUPOM_INVALIDO`, `CUPOM_EXPIRADO` |
 
+Definições relevantes para a validação dos itens:
+
+| Código | Definição |
+|---|---|
+| `ITEM_INVALIDO` | Um item não é um objeto com produtoId e quantidade. |
+| `PRODUTO_NAO_ENCONTRADO` | Um item referencia um produto inexistente. |
+
 ## 4. Pontos ambíguos
 
 Pontos em que a documentação é omissa ou inconsistente. Cada item traz a interpretação adotada e o tratamento nos testes. As interpretações são do candidato e podem ser revistas conforme o comportamento observado.

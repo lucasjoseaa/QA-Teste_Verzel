@@ -10,20 +10,21 @@ Legenda: CT = caso de teste, CAnn = critério de aceite, BUG-NNN = defeito.
 | Frete grátis | 6 |
 | Limite de quantidade | 5 |
 | Cálculo do carrinho | 3 |
-| API de cálculo do carrinho | 8 |
-| API de pedidos | 3 |
+| API de cálculo do carrinho | 9 |
+| API de pedidos | 4 |
 | Validação do cliente | 6 |
 | API de produtos e rotas | 6 |
 | Fluxo da interface | 5 |
-| Total | 48 |
+| Total | 50 |
 
 ## 2. Resumo por tipo
 
 | Tipo | Quantidade |
 | --- | ---: |
-| Automatizado | 32 |
+| Automatizado | 34 |
 | Manual | 14 |
 | Exploratório | 2 |
+| Total | 50 |
 
 ## 3. Cobertura dos critérios de aceite
 
@@ -40,6 +41,7 @@ Legenda: CT = caso de teste, CAnn = critério de aceite, BUG-NNN = defeito.
 | CA09 | CT-FRETE-04, CT-FRETE-05, CT-API-CARRINHO-01 |
 | CA10 | CT-QUANTIDADE-01, CT-QUANTIDADE-02, CT-QUANTIDADE-03, CT-QUANTIDADE-04, CT-QUANTIDADE-05, CT-API-CARRINHO-05, CT-API-CARRINHO-06, CT-API-CARRINHO-07 |
 | CA11 | CT-CALCULO-01, CT-CALCULO-02, CT-CALCULO-03, CT-API-CARRINHO-01, CT-API-CARRINHO-02, CT-CLIENTE-01, CT-CLIENTE-02, CT-CLIENTE-03, CT-CLIENTE-04, CT-CLIENTE-05, CT-CLIENTE-06 |
+| Requisito implícito de qualidade da mensagem | CT-API-CARRINHO-09, CT-API-PEDIDOS-04 |
 
 ## 4. Cupom de desconto
 
@@ -93,6 +95,7 @@ Legenda: CT = caso de teste, CAnn = critério de aceite, BUG-NNN = defeito.
 | CT-API-CARRINHO-06 | CA10 | Produto inexistente é rejeitado. | API acessível. | P999 x1. | Status 422; erro PRODUTO_NAO_ENCONTRADO. | API | Automatizado | Média |
 | CT-API-CARRINHO-07 | CA10 | Itens duplicados são rejeitados. | API acessível. | Mesmo produto em duas linhas. | Status 422; erro ITEM_DUPLICADO. | API | Automatizado | Média |
 | CT-API-CARRINHO-08 | CA06, CA08 | Calcular frete grátis com cupom sobre subtotal de R$ 200,00. | API acessível. | POST /api/carrinho/calcular com P005 x2 e BEMVINDO10. | Status 200; subtotal 200; desconto 20; frete 0; total 180. | API | Automatizado | Alta |
+| CT-API-CARRINHO-09 | - | Rejeitar produtoId ausente, nulo ou vazio sem expor valores internos na mensagem. | API acessível. | Outline com item sem produtoId, produtoId nulo ou produtoId vazio. | Status 422; mensagem sem `undefined`, `null` ou espaços duplicados. Expectativa baseada em requisito implícito de qualidade; a documentação não define o texto das mensagens. | API | Automatizado | Baixa |
 
 ## 9. API de pedidos
 
@@ -101,6 +104,7 @@ Legenda: CT = caso de teste, CAnn = critério de aceite, BUG-NNN = defeito.
 | CT-API-PEDIDOS-01 | CA01, CA06 | Confirmar pedido com exemplo da documentação. | API acessível. | Maria Silva, maria@exemplo.com, CEP 01310-100, P005 x1, BEMVINDO10. | Status 201; número no padrão VZ- + 6 dígitos; total 109.9. | API | Automatizado | Alta |
 | CT-API-PEDIDOS-02 | CA03 | Pedido com cupom inexistente rejeitado. | API acessível. | P005 x1, cupom DESCONTO99. | Status 422; erro CUPOM_INVALIDO. | API | Automatizado | Alta |
 | CT-API-PEDIDOS-03 | CA04 | Pedido com cupom expirado rejeitado. | API acessível. | P005 x1, cupom VERAO2026. | Status 422; erro CUPOM_EXPIRADO. | API | Automatizado | Alta |
+| CT-API-PEDIDOS-04 | - | Rejeitar produtoId ausente, nulo ou vazio sem expor valores internos na mensagem. | API acessível. | Outline com cliente válido e item sem produtoId, produtoId nulo ou produtoId vazio. | Status 422; mensagem sem `undefined`, `null` ou espaços duplicados. Expectativa baseada em requisito implícito de qualidade; a documentação não define o texto das mensagens. | API | Automatizado | Baixa |
 
 ## 10. Validação do cliente
 

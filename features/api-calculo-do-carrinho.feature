@@ -63,3 +63,9 @@ Funcionalidade: API de cálculo do carrinho
     E o campo "desconto" é 20
     E o campo "frete" é 0
     E o campo "total" é 180
+
+  @CT-API-CARRINHO-09 @api @automatizado
+  Cenário: A mensagem de erro não expõe produtoId ausente ou inválido
+    Quando envio uma requisição POST para "/api/carrinho/calcular" com produtoId <estado>
+    Então a resposta tem status 422
+    E a mensagem de erro não contém valores internos do código

@@ -1,0 +1,20 @@
+{
+    "cenario":  "CT-API-CARRINHO-09",
+    "endpoint":  "/api/carrinho/calcular",
+    "metodo":  "POST",
+    "corpoEnviado":  {
+                         "itens":  [
+                                       {
+                                           "quantidade":  1
+                                       }
+                                   ]
+                     },
+    "status":  422,
+    "respostaRecebida":  {
+                             "erro":  {
+                                          "codigo":  "PRODUTO_NAO_ENCONTRADO",
+                                          "mensagem":  "Produto undefined não encontrado.",
+                                          "campo":  "itens[0].produtoId"
+                                      }
+                         }
+}

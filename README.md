@@ -152,7 +152,7 @@ Cada cenário tem o mesmo identificador e o mesmo título na matriz, no arquivo 
 
 ## Cobertura
 
-São **48 cenários**, distribuídos por área e por tipo de execução:
+São **50 cenários**, distribuídos por área e por tipo de execução:
 
 | Área | Cenários | Automatizado | Manual | Exploratório |
 |---|---|---|---|---|
@@ -160,12 +160,12 @@ São **48 cenários**, distribuídos por área e por tipo de execução:
 | Frete e frete grátis | 6 | 3 | 3 | 0 |
 | Limite de quantidade | 5 | 5 | 0 | 0 |
 | Cálculo e arredondamento | 3 | 0 | 3 | 0 |
-| API: cálculo do carrinho | 8 | 8 | 0 | 0 |
-| API: pedidos | 3 | 3 | 0 | 0 |
+| API: cálculo do carrinho | 9 | 9 | 0 | 0 |
+| API: pedidos | 4 | 4 | 0 | 0 |
 | Dados do cliente | 6 | 5 | 1 | 0 |
 | API: produtos, rotas e erros gerais | 6 | 6 | 0 | 0 |
 | Fluxo da interface | 5 | 0 | 4 | 1 |
-| **Total** | **48** | **32** | **14** | **2** |
+| **Total** | **50** | **34** | **14** | **2** |
 
 Os cenários automatizados são executados com Playwright e, onde há exemplos (Esquema do Cenário), cada linha de exemplo gera um teste. A tabela de cobertura de cada critério de aceite está no final da matriz de cenários.
 
@@ -173,7 +173,7 @@ Os cenários automatizados são executados com Playwright e, onde há exemplos (
 
 Os resultados de cada cenário estão em [`docs/03-execucao-dos-testes.md`](docs/03-execucao-dos-testes.md), com o resumo, a data da execução e a evidência de cada falha.
 
-Nas execuções automatizadas, **34 testes de API e 10 de interface** exercitaram os cenários de API e de interface. Os 10 testes que falham por divergência com a documentação estão marcados com `test.fail`, referenciando o defeito correspondente. Assim, o pipeline permanece estável enquanto os defeitos estão abertos, e um teste passa a sinalizar quando o defeito for corrigido.
+Na execução mais recente, **40 testes de API e 10 de interface** foram executados. Os 16 casos com divergências conhecidas estão marcados com `test.fail` (14 de API e 2 de interface), vinculados aos defeitos correspondentes; o Playwright os contabiliza como resultados esperados. Assim, um teste passa a sinalizar quando o defeito for corrigido.
 
 ## Defeitos encontrados
 
@@ -183,6 +183,7 @@ Nas execuções automatizadas, **34 testes de API e 10 de interface** exercitara
 | [BUG-002](docs/bugs/BUG-002-api-sem-limite-de-5-unidades.md) | A API não aplica o limite de 5 unidades por produto | Média | Média | API |
 | [BUG-003](docs/bugs/BUG-003-nome-aceita-numeros-e-simbolos.md) | O campo nome aceita números e símbolos | Baixa | Baixa | Interface e API |
 | [BUG-004](docs/bugs/BUG-004-email-aceita-caracteres-invalidos.md) | O campo e-mail aceita endereço com caracteres inválidos no domínio | Média | Média | Interface e API |
+| [BUG-005](docs/bugs/BUG-005-mensagem-de-erro-com-valores-internos.md) | A mensagem de erro expõe valores internos quando o produtoId é ausente, nulo ou vazio | Baixa | Baixa | API |
 
 Observação sobre o BUG-003: a documentação exige nome e sobrenome, mas não define os caracteres permitidos. O relatório registra a expectativa como requisito implícito, baseado em prática comum de validação.
 

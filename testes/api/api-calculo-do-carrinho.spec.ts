@@ -3,10 +3,17 @@ import {
   criarCorpoCarrinho,
   criarItem,
   cupons,
+  anexarEvidenciaApi,
   esperarErro,
   esperarValorMonetario,
   obterCampo,
 } from './apoio/dados-api';
+
+const casosProdutoIdInvalido = [
+  { exemplo: 'sem-produtoid', item: { quantidade: 1 } },
+  { exemplo: 'produtoid-nulo', item: { produtoId: null, quantidade: 1 } },
+  { exemplo: 'produtoid-vazio', item: { produtoId: '', quantidade: 1 } },
+] as const;
 
 test.describe('API de cálculo do carrinho', () => {
   test('CT-API-CARRINHO-01: Calcular carrinho com exemplo da documentação', async ({ request }) => {
@@ -100,4 +107,25 @@ test.describe('API de cálculo do carrinho', () => {
     esperarValorMonetario(obterCampo(corpo, 'frete'), 0);
     esperarValorMonetario(obterCampo(corpo, 'total'), 18000);
   });
+
+  for (const { exemplo, item } of casosProdutoIdInvalido) {
+    test(`CT-API-CARRINHO-09: Mensagem sem valores internos - ${exemplo}`, async ({ request }, testInfo) => {
+      test.fail(true, 'BUG-005: a mensagem de erro expõe valores internos do produtoId');
+      const endpoint = '/api/carrinho/calcular';
+      const corpoEnviado = criarCorpoCarrinho([item]);
+      const resposta = await request.post(endpoint, { data: corpoEnviado });
+      const corpoRecebido = await anexarEvidenciaApi(
+        testInfo,
+        `CT-API-CARRINHO-09-${exemplo}-resposta`,
+        endpoint,
+        corpoEnviado,
+        resposta,
+      );
+
+      expect(resposta.status()).toBe(422);
+      const mensagem = obterCampo(corpoRecebido, 'erro.mensagem');
+      expect(mensagem).toEqual(expect.any(String));
+      expect(mensagem).not.toMatch(/\b(?:undefined|null)\b| {2}/);
+    });
+  }
 });
