@@ -181,7 +181,7 @@ Dos 16 cenários manuais e exploratórios com execução registrada em 06/10/202
 - Itens de navegação visíveis: [preencher]
 - Largura em que os itens "Produtos" e "Documentação" deixam de aparecer: [preencher, em px, se aplicável]
 - Observação: Na versão mobile, a barra do topo exibe apenas o logotipo e o carrinho. Os itens "Produtos" e "Documentação" não são exibidos e não há ícone de menu. O layout não prevê menu lateral em nenhuma versão. A documentação não define o comportamento na versão mobile, e a vitrine e o link da documentação permanecem acessíveis pela página inicial. Não é tratado como defeito.
-- Evidência: [CT-INTERFACE-06-versao-mobile.png](./evidencias/manual/CT-INTERFACE-06-versao-mobile.png) (arquivo a ser adicionado).
+- Evidência: [CT-INTERFACE-06-versao-mobile.png](./evidencias/manual/CT-INTERFACE-06-versao-mobile.png).
 
 ## 5. Observações
 
