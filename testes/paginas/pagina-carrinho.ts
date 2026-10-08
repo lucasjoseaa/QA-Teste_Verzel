@@ -1,4 +1,4 @@
-import type { Locator, Page } from '@playwright/test';
+import { expect, type Locator, type Page } from '@playwright/test';
 import { converterTextoMonetarioEmCentavos } from '../suporte/valores-monetarios';
 
 export class PaginaCarrinho {
@@ -53,6 +53,11 @@ export class PaginaCarrinho {
   private async obterValorResumo(rotulo: string | RegExp): Promise<number> {
     const tituloResumo = this.page.getByRole('heading', { name: 'Resumo do pedido' });
     const resumo = this.page.getByRole('region').filter({ has: tituloResumo });
+    await expect(resumo).toBeVisible();
+
+    const termoEsperado = resumo.getByText(rotulo, { exact: true });
+    await expect(termoEsperado).toBeVisible();
+
     const termos = await resumo.getByRole('term').allInnerTexts();
     const indice = termos.findIndex((termo) => (
       typeof rotulo === 'string' ? termo === rotulo : rotulo.test(termo)
@@ -62,6 +67,7 @@ export class PaginaCarrinho {
     }
 
     const definicao = resumo.getByRole('definition').nth(indice);
+    await expect(definicao).toBeVisible();
     return converterTextoMonetarioEmCentavos(await definicao.innerText());
   }
 }
