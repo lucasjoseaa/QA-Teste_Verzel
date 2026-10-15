@@ -6,19 +6,24 @@
 |---|---|
 | Data | 06/10/2026 |
 | Execução da API (BUG-005) | 08/10/2026 |
-| Execução da interface (Etapa 6) | 20:36:47 (UTC−03:00) |
+| Última execução da interface | 06/10/2026, 20:36:47 (UTC−03:00) |
+| Sistema operacional | Windows 11, versão 23H2 (build 22631.6199) |
+| Navegador da execução manual e exploratória | Google Chrome 155.0.8059.40 (64 bits) |
+| Navegador dos testes automatizados de interface | Chromium 153.0.8010.12, fornecido pelo Playwright |
+| Testes automatizados de API | `APIRequestContext` do Playwright, sem navegador |
 | Node.js | v24.21.0 |
 | Playwright | 1.63.0 |
+| URL da loja | https://verzel-store.qa-test-verzel-store.workers.dev/ |
 | Cenários definidos na matriz | 51 |
 | Casos automatizados executados, com exemplos expandidos | 50 |
 | Passou no Playwright | 50 |
 | Falhas conhecidas marcadas como esperadas (`test.fail`) | 16 (14 API; 2 interface) |
 | Falhas inesperadas | 0 |
-| Cenários manuais e exploratórios executados | 16 |
-| Cenários manuais e exploratórios que passaram | 15 |
+| Cenários manuais e exploratórios executados | 17 |
+| Cenários manuais e exploratórios que passaram | 16 |
 | Cenários manuais e exploratórios que falharam | 1 |
 
-Após os testes correspondentes aos defeitos receberem `test.fail`, o Playwright reportou os 50 casos automatizados como aprovados, incluindo 16 falhas esperadas e identificadas (14 de API e 2 de interface); não houve falhas inesperadas. As linhas dos cenários automatizados abaixo registram o comportamento observado como “Falhou” quando houve divergência. Na primeira execução do complemento, antes de adicionar `test.fail` aos seis novos casos, os 34 testes preexistentes passaram e os seis casos novos falharam conforme as respostas observadas. Dos 16 cenários manuais e exploratórios com status informado, 15 passaram e CT-INTERFACE-05 falhou; o status de CT-INTERFACE-06 permanece a preencher. As linhas de exemplos expandidas explicam a diferença entre as 51 definições da matriz e os 67 registros de cenários automatizados, manuais e exploratórios.
+Após os testes correspondentes aos defeitos receberem `test.fail`, o Playwright reportou os 50 casos automatizados como aprovados, incluindo 16 falhas esperadas e identificadas (14 de API e 2 de interface); não houve falhas inesperadas. As linhas dos cenários automatizados abaixo registram o comportamento observado como “Falhou” quando houve divergência. Na primeira execução do complemento, antes de adicionar `test.fail` aos seis novos casos, os 34 testes preexistentes passaram e os seis casos novos falharam conforme as respostas observadas. Dos 17 cenários manuais e exploratórios, 16 passaram e CT-INTERFACE-05 falhou. As linhas de exemplos expandidas explicam a diferença entre as 51 definições da matriz e os 67 registros de cenários automatizados, manuais e exploratórios.
 
 | Camada | Casos executados | Reportados como aprovados pelo Playwright | Falhas esperadas (`test.fail`) | Falhas inesperadas |
 |---|---:|---:|---:|---:|
@@ -129,12 +134,12 @@ Os relatórios JSON e as saídas completas de texto foram gerados em arquivos te
 | CT-INTERFACE-02 | Carrinho vazio informa que ele está vazio | Interface | Manual | Passou | — | Execução manual informada pelo responsável em 06/10/2026. |
 | CT-INTERFACE-03 | Remover um item do carrinho recalcula o total | Interface | Manual | Passou | — | Execução manual informada pelo responsável em 06/10/2026. |
 | CT-INTERFACE-04 | Outra aba ou janela anônima inicia com carrinho vazio | Interface | Manual | Passou | — | Execução manual informada pelo responsável em 06/10/2026. |
-| CT-INTERFACE-05 | Concluir o pedido pela interface com dados válidos | Interface | Exploratório | Falhou | — | Falha informada pelo responsável em 06/10/2026; detalhes da execução não fornecidos. |
-| CT-INTERFACE-06 | Verificar a navegação na versão mobile | Interface | Exploratório | [preencher: Executado] | [CT-INTERFACE-06-versao-mobile.png](./evidencias/manual/CT-INTERFACE-06-versao-mobile.png) | Observação exploratória; não é tratada como defeito. Detalhes de execução abaixo. |
+| CT-INTERFACE-05 | Concluir o pedido pela interface com dados válidos | Interface | Exploratório | Falhou | — | Execução exploratória informada pelo responsável em 06/10/2026. Com dados válidos, o pedido foi confirmado; a falha está nas validações da tela de fechamento, que aceitaram nome com números e símbolos e e-mail inválido, registrados em [BUG-003](./bugs/BUG-003-nome-aceita-numeros-e-simbolos.md) e [BUG-004](./bugs/BUG-004-email-aceita-caracteres-invalidos.md). |
+| CT-INTERFACE-06 | Verificar a navegação na versão mobile | Interface | Exploratório | Passou | [CT-INTERFACE-06-versao-mobile.png](./evidencias/manual/CT-INTERFACE-06-versao-mobile.png) | Observação exploratória; não é tratada como defeito. Detalhes de execução abaixo. |
 
 ## 3. Falhas observadas
 
-Os valores esperados abaixo vêm dos critérios e resultados registrados na documentação e na matriz. Os valores obtidos são das execuções reais. As divergências automatizadas estão associadas aos relatórios de defeito da Etapa 6.
+Os valores esperados abaixo vêm dos critérios e resultados registrados na documentação e na matriz. Os valores obtidos são das execuções reais. As divergências automatizadas estão associadas aos relatórios de defeito da seção 6.
 
 | Teste | Esperado e fonte | Obtido na execução | Evidência |
 |---|---|---|---|
@@ -151,7 +156,7 @@ Os valores esperados abaixo vêm dos critérios e resultados registrados na docu
 
 ## 4. Execução manual e exploratória
 
-Dos 16 cenários manuais e exploratórios com execução registrada em 06/10/2026, 15 passaram e CT-INTERFACE-05 falhou. O registro de CT-INTERFACE-06 foi incluído, mas seus campos de execução permanecem pendentes de preenchimento.
+Dos 17 cenários manuais e exploratórios, 16 passaram e CT-INTERFACE-05 falhou. Os 16 primeiros foram executados em 06/10/2026 e CT-INTERFACE-06, em 08/10/2026.
 
 | ID | Data | Status |
 |---|---|---|
@@ -171,15 +176,14 @@ Dos 16 cenários manuais e exploratórios com execução registrada em 06/10/202
 | CT-INTERFACE-03 | 06/10/2026 | Passou |
 | CT-INTERFACE-04 | 06/10/2026 | Passou |
 | CT-INTERFACE-05 | 06/10/2026 | Falhou |
-| CT-INTERFACE-06 | — | [preencher: Executado] |
+| CT-INTERFACE-06 | 08/10/2026 | Passou |
 
 ### CT-INTERFACE-06 — Verificar a navegação na versão mobile
 
-- Status: [preencher: Executado]
-- Navegador e dispositivo simulado: [preencher]
-- Existe menu de navegação (lateral ou ícone) na versão mobile: [preencher: Sim/Não]
-- Itens de navegação visíveis: [preencher]
-- Largura em que os itens "Produtos" e "Documentação" deixam de aparecer: [preencher, em px, se aplicável]
+- Status: Passou (observação exploratória, sem defeito)
+- Navegador e dispositivo simulado: Google Chrome 155.0.8059.40 (64 bits), modo responsivo das ferramentas do desenvolvedor, com 768 px de largura
+- Existe menu de navegação (lateral ou ícone) na versão mobile: Não
+- Itens de navegação visíveis: logotipo e Carrinho
 - Observação: Na versão mobile, a barra do topo exibe apenas o logotipo e o carrinho. Os itens "Produtos" e "Documentação" não são exibidos e não há ícone de menu. O layout não prevê menu lateral em nenhuma versão. A documentação não define o comportamento na versão mobile, e a vitrine e o link da documentação permanecem acessíveis pela página inicial. Não é tratado como defeito.
 - Evidência: [CT-INTERFACE-06-versao-mobile.png](./evidencias/manual/CT-INTERFACE-06-versao-mobile.png).
 
@@ -202,6 +206,6 @@ Dos 16 cenários manuais e exploratórios com execução registrada em 06/10/202
 |---|---|---|---|---|---|
 | [BUG-001](./bugs/BUG-001-frete-gratis-no-limite-de-200.md) | Frete grátis não é aplicado no subtotal de R$ 200,00 | Alta | Alta | Interface e API | CT-API-CARRINHO-02, CT-API-CARRINHO-08, CT-FRETE-02, CT-FRETE-04 |
 | [BUG-002](./bugs/BUG-002-api-sem-limite-de-5-unidades.md) | A API não aplica o limite de 5 unidades por produto | Média | Média | API | CT-QUANTIDADE-04; CT-QUANTIDADE-02 como contraste |
-| [BUG-003](./bugs/BUG-003-nome-aceita-numeros-e-simbolos.md) | O campo nome aceita números e símbolos | Baixa | Baixa | Interface e API | CT-CLIENTE-05; CT-INTERFACE-05 (observação manual informada) |
-| [BUG-004](./bugs/BUG-004-email-aceita-caracteres-invalidos.md) | O campo e-mail aceita caracteres inválidos no domínio | Média | Média | Interface e API | CT-CLIENTE-06; CT-CLIENTE-02 como contraste; CT-INTERFACE-05 (observação manual informada) |
+| [BUG-003](./bugs/BUG-003-nome-aceita-numeros-e-simbolos.md) | O campo nome aceita números e símbolos | Baixa | Baixa | Interface e API | CT-CLIENTE-05; CT-INTERFACE-05 (observação manual) |
+| [BUG-004](./bugs/BUG-004-email-aceita-caracteres-invalidos.md) | O campo e-mail aceita caracteres inválidos no domínio | Média | Média | Interface e API | CT-CLIENTE-06; CT-CLIENTE-02 como contraste; CT-INTERFACE-05 (observação manual) |
 | [BUG-005](./bugs/BUG-005-mensagem-de-erro-com-valores-internos.md) | A mensagem de erro exibe valores internos quando o produtoId é ausente, nulo ou vazio | Baixa | Baixa | API | CT-API-CARRINHO-09, CT-API-PEDIDOS-04 |

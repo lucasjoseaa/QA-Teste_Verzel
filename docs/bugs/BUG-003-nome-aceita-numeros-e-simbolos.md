@@ -6,22 +6,22 @@
 
 | ID | Status | Severidade | Prioridade | Camada | Funcionalidade | Critérios de aceite relacionados | Cenários de teste relacionados | Data e hora da observação | Reprodutibilidade |
 |---|---|---|---|---|---|---|---|---|---|
-| BUG-003 | Aberto | Baixa | Baixa | Interface e API | Validação do nome do cliente | Regra de cliente, seção 3.2 da análise; não há critério explícito sobre os caracteres permitidos | CT-CLIENTE-05 (três exemplos); CT-INTERFACE-05 (observação manual informada) | API: 06/10/2026, 19:57:19, 20:21:06 e 20:36:30 (UTC−03:00). Data/hora da observação manual: não registrada. | Os três exemplos da API retornaram HTTP 201 nas execuções de API registradas. A observação de interface foi informada sem registro de data/hora. |
+| BUG-003 | Aberto | Baixa | Baixa | Interface e API | Validação do nome do cliente | Regra de cliente, seção 3.2 da análise; não há critério explícito sobre os caracteres permitidos | CT-CLIENTE-05 (três exemplos); CT-INTERFACE-05 (execução manual) | API: 06/10/2026, 19:57:19, 20:21:06 e 20:36:30 (UTC−03:00). Interface (execução manual): 06/10/2026, antes das 21:21 (UTC−03:00). | Os três exemplos da API retornaram HTTP 201 nas execuções de API registradas. A interface permitiu confirmar o pedido com os três nomes na execução manual, registrada em capturas. |
 
 ## 3. Ambiente
 
 - URL da loja: https://verzel-store.qa-test-verzel-store.workers.dev/
 - Entrega: VZS-142, versão 2.3.0.
-- Sistema operacional: Windows (versão não registrada).
+- Sistema operacional: Windows Windows 11, versão 23H2 (build 22631.6199).
 - Node.js: v24.21.0.
 - Playwright: 1.63.0.
 - Navegador nos testes automatizados de interface: Chromium 153.0.8010.12.
 - Testes automatizados de API usam `APIRequestContext`, sem navegador.
-- Navegador e versão usados na execução manual: [preencher: navegador e versão usados na execução manual].
+- Navegador e versão usados na execução manual: Google Chrome 155.0.8059.40 (64 bits).
 
 ## 4. Resumo
 
-Os três nomes de teste foram aceitos pela API e os pedidos foram criados. A solicitação desta Etapa também informa que os três nomes foram aceitos no fluxo manual da interface, mas não há captura ou data/hora dessa observação no repositório.
+Os três nomes de teste foram aceitos pela API e os pedidos foram criados. Na execução manual, a interface também permitiu confirmar o pedido com os três nomes, sem exibir mensagem de validação.
 
 ## 5. Pré-condições
 
@@ -34,8 +34,6 @@ Os três nomes de teste foram aceitos pela API e os pedidos foram criados. A sol
 
 ### Na interface
 
-Conforme a observação manual informada na solicitação desta Etapa:
-
 1. Abrir a loja.
 2. Adicionar um produto ao carrinho.
 3. Abrir o carrinho e seguir para o fechamento do pedido.
@@ -44,9 +42,9 @@ Conforme a observação manual informada na solicitação desta Etapa:
    - `lucas@ jose#`
    - `lucas1 jose@`
 5. Confirmar o pedido.
-6. Repetir o fluxo com cada nome. A observação informada foi que os três pedidos foram aceitos.
+6. Repetir o fluxo com cada nome. Nos três casos, nenhuma mensagem de validação foi exibida e o pedido foi confirmado.
 
-Não se registrou o texto exato da tela, a data/hora, o corpo completo enviado pela interface ou uma captura correspondente.
+As capturas de cada caso estão na seção 10 e mostram o formulário preenchido com o nome testado, sem mensagem de validação, antes da confirmação.
 
 ### Na API
 
@@ -84,7 +82,7 @@ Com base na expectativa de requisito implícito para caracteres em nomes, os ped
 
 ### Interface
 
-A solicitação desta Etapa informa que o fluxo manual aceitou os três nomes. Não foi fornecido o texto exato exibido; a evidência de interface e o horário da execução não constam no repositório.
+Na execução manual, a interface não exibiu mensagem de validação para nenhum dos três nomes e permitiu confirmar o pedido. As capturas estão na seção 10.
 
 ### API
 
@@ -209,6 +207,4 @@ Não identificada. Não houve inspeção do código de validação.
 
 - **Requisito implícito:** a documentação não define uma lista de caracteres permitidos. A equipe responsável deve confirmar se os valores testados devem ser rejeitados antes de tratar a regra como requisito explícito.
 - Os testes usam e-mail `lucas@exemplo.com` e CEP `01310-100`, conforme os corpos e evidências atuais.
-- A informação sobre a interface foi fornecida na solicitação desta Etapa; não há arquivo de execução, horário ou captura no repositório que permita verificá-la independentemente.
-- O campo de navegador da execução manual precisa ser preenchido pelo responsável.
 - As capturas manuais dos três casos de nome estão anexadas.

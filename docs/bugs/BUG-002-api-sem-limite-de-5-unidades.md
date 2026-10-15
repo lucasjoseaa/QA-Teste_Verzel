@@ -10,12 +10,12 @@
 
 - URL da loja: https://verzel-store.qa-test-verzel-store.workers.dev/
 - Entrega: VZS-142, versão 2.3.0.
-- Sistema operacional: Windows (versão não registrada).
+- Sistema operacional: Windows 11, versão 23H2 (build 22631.6199).
 - Node.js: v24.21.0.
 - Playwright: 1.63.0.
 - Navegador nos testes automatizados de interface: Chromium 153.0.8010.12.
 - Os testes de API usam `APIRequestContext`, sem navegador.
-- Navegador e versão usados na execução manual: [preencher: navegador e versão usados na execução manual].
+- Navegador e versão usados na execução manual: Google Chrome 155.0.8059.40 (64 bits).
 
 ## 4. Resumo
 

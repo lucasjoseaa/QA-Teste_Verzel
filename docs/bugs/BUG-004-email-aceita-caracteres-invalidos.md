@@ -4,22 +4,22 @@
 
 | ID | Status | Severidade | Prioridade | Camada | Funcionalidade | Critérios de aceite relacionados | Cenários de teste relacionados | Data e hora da observação | Reprodutibilidade |
 |---|---|---|---|---|---|---|---|---|---|
-| BUG-004 | Aberto | Média | Média | Interface e API | Validação de e-mail do cliente | Regra de cliente, seção 3.2 da análise: o e-mail precisa ter formato válido; não há CA específico | CT-CLIENTE-06; CT-CLIENTE-02 como contraste; CT-INTERFACE-05 (observação manual informada) | API: 06/10/2026, 19:57:19, 20:21:06 e 20:36:30 (UTC−03:00). Data/hora da observação manual: não registrada. | CT-CLIENTE-06 retornou HTTP 201 nas execuções de API registradas. A observação da interface foi informada sem data/hora ou captura. |
+| BUG-004 | Aberto | Média | Média | Interface e API | Validação de e-mail do cliente | Regra de cliente, seção 3.2 da análise: o e-mail precisa ter formato válido; não há CA específico | CT-CLIENTE-06; CT-CLIENTE-02 como contraste; CT-INTERFACE-05 (execução manual) | API: 06/10/2026, 19:57:19, 20:21:06 e 20:36:30 (UTC−03:00). Interface (execução manual): 06/10/2026, antes das 21:26 (UTC−03:00). | CT-CLIENTE-06 retornou HTTP 201 nas execuções de API registradas. A interface permitiu confirmar o pedido com o mesmo e-mail na execução manual, registrada em captura. |
 
 ## 3. Ambiente
 
 - URL da loja: https://verzel-store.qa-test-verzel-store.workers.dev/
 - Entrega: VZS-142, versão 2.3.0.
-- Sistema operacional: Windows (versão não registrada).
+- Sistema operacional: Windows 11, versão 23H2 (build 22631.6199).
 - Node.js: v24.21.0.
 - Playwright: 1.63.0.
 - Navegador nos testes automatizados de interface: Chromium 153.0.8010.12.
 - Testes automatizados de API usam `APIRequestContext`, sem navegador.
-- Navegador e versão usados na execução manual: [preencher: navegador e versão usados na execução manual].
+- Navegador e versão usados na execução manual: Google Chrome 155.0.8059.40 (64 bits).
 
 ## 4. Resumo
 
-O endereço `usuario@!#%.com` foi aceito pela API e o pedido foi criado. A solicitação desta Etapa também informa que o mesmo e-mail foi aceito no fluxo manual da interface, mas não há captura ou data/hora dessa observação no repositório.
+O endereço `usuario@!#%.com` foi aceito pela API e o pedido foi criado. Na execução manual, a interface também permitiu confirmar o pedido com esse e-mail, sem exibir mensagem de validação.
 
 ## 5. Pré-condições
 
@@ -32,16 +32,14 @@ O endereço `usuario@!#%.com` foi aceito pela API e o pedido foi criado. A solic
 
 ### Na interface
 
-Conforme a observação manual informada na solicitação desta Etapa:
-
 1. Abrir a loja.
 2. Adicionar um produto ao carrinho.
 3. Abrir o carrinho e seguir para o fechamento do pedido.
 4. Preencher o e-mail com `usuario@!#%.com` e informar nome e CEP válidos.
 5. Confirmar o pedido.
-6. A observação informada foi que o pedido foi aceito.
+6. Nenhuma mensagem de validação foi exibida e o pedido foi confirmado.
 
-Não se registrou o texto exato exibido, a data/hora, o corpo completo enviado pela interface ou uma captura correspondente.
+A captura está na seção 10 e mostra o formulário preenchido com o e-mail testado, sem mensagem de validação, antes da confirmação.
 
 ### Na API
 
@@ -61,7 +59,7 @@ O pedido deveria ser recusado por e-mail inválido; na API, HTTP 422 e código `
 
 ### Interface
 
-A solicitação desta Etapa informa que o fluxo manual aceitou o e-mail inválido. Não foi fornecido o texto exato exibido; a evidência de interface e o horário da execução não constam no repositório.
+Na execução manual, a interface não exibiu mensagem de validação para o e-mail e permitiu confirmar o pedido. A captura está na seção 10.
 
 ### API
 
@@ -121,6 +119,4 @@ Um pedido pode ser criado com um endereço de e-mail que a documentação caract
 
 - Como contraste, CT-CLIENTE-02 passou: os valores `maria`, `maria@` e `maria@exemplo` foram recusados pela API.
 - A documentação exige e-mail em formato válido, mas não especifica formalmente a gramática completa de endereços. O exemplo testado contém caracteres especiais no domínio.
-- A informação sobre a interface foi fornecida na solicitação desta Etapa; não há arquivo de execução, horário ou captura no repositório que permita verificá-la independentemente.
-- O campo de navegador da execução manual precisa ser preenchido pelo responsável.
 - A captura manual do e-mail inválido está anexada.
